@@ -24,9 +24,7 @@ import {
   ArrowRight,
   CheckCircle,
   XCircle,
-  TrendingUp,
   Users,
-  Tag
 } from 'lucide-react';
 
 // Types

@@ -15,14 +15,11 @@ import {
   ChevronUp,
   Plus,
   Edit,
-  AlertTriangle,
   Check,
   Calendar,
-  Sliders,
   ArrowUp,
   ArrowDown,
   Save,
-  RefreshCw,
   Trash2
 } from 'lucide-react';
 

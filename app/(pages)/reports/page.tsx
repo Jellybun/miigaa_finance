@@ -13,13 +13,10 @@ import {
   X,
   Calendar,
   Download,
-  Filter,
-  ArrowRight,
   Printer,
   Share2,
   BarChart2,
   TrendingUp,
-  List,
   Activity,
   RefreshCw,
   Clock
