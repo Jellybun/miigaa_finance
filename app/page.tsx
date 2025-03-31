@@ -10,9 +10,6 @@ import {
   FileText, 
   Settings, 
   Bell, 
-  Search, 
-  User, 
-  LogOut, 
   Menu, 
   X
 } from 'lucide-react';

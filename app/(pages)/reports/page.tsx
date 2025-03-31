@@ -13,10 +13,13 @@ import {
   X,
   Calendar,
   Download,
+  Filter,
+  ArrowRight,
   Printer,
   Share2,
   BarChart2,
   TrendingUp,
+  List,
   Activity,
   RefreshCw,
   Clock
@@ -41,16 +44,82 @@ interface ReportPeriod {
   description: string;
 }
 
+// Strongly typed report data interfaces
 interface ReportData {
   type: string;
   title: string;
   dateRange: string;
   generatedAt: string;
-  data: Record<string, any>;
+  data: ReportDataContent;
 }
 
-// Sample Income Statement Data
-const incomeStatementData = {
+// Union type for all report data content types
+type ReportDataContent = 
+  | IncomeStatementData 
+  | BalanceSheetData 
+  | CashFlowData 
+  | ExpenseReportData 
+  | RevenueReportData;
+
+interface IncomeStatementData {
+  revenue: Record<string, number>;
+  expenses: Record<string, number>;
+  summary: {
+    totalRevenue: number;
+    totalExpenses: number;
+    netIncome: number;
+    marginPercentage: number;
+  };
+}
+
+interface BalanceSheetData {
+  assets: {
+    current: Record<string, number>;
+    fixed: Record<string, number>;
+  };
+  liabilities: {
+    current: Record<string, number>;
+    longTerm: Record<string, number>;
+  };
+  equity: Record<string, number>;
+  summary: {
+    totalAssets: number;
+    totalLiabilities: number;
+    totalEquity: number;
+  };
+}
+
+interface CashFlowData {
+  operating: Record<string, number>;
+  investing: Record<string, number>;
+  financing: Record<string, number>;
+  summary: {
+    netCashIncrease: number;
+    beginningCashBalance: number;
+    endingCashBalance: number;
+  };
+}
+
+interface ExpenseReportData {
+  categories: Array<{
+    name: string;
+    amount: number;
+    percentage: number;
+  }>;
+  total: number;
+}
+
+interface RevenueReportData {
+  categories: Array<{
+    name: string;
+    amount: number;
+    percentage: number;
+  }>;
+  total: number;
+}
+
+// Sample data with the correct types
+const incomeStatementData: IncomeStatementData = {
   revenue: {
     services: 39000,
     products: 6230,
@@ -76,8 +145,7 @@ const incomeStatementData = {
   }
 };
 
-// Sample Balance Sheet Data
-const balanceSheetData = {
+const balanceSheetData: BalanceSheetData = {
   assets: {
     current: {
       cash: 42500,
@@ -114,8 +182,7 @@ const balanceSheetData = {
   }
 };
 
-// Sample Cash Flow Statement Data
-const cashFlowData = {
+const cashFlowData: CashFlowData = {
   operating: {
     netIncome: 31800,
     depreciation: 1200,
@@ -142,8 +209,7 @@ const cashFlowData = {
   }
 };
 
-// Sample Expense Report Data
-const expenseReportData = {
+const expenseReportData: ExpenseReportData = {
   categories: [
     { name: 'Salaries', amount: 15000, percentage: 81.2 },
     { name: 'Rent', amount: 1500, percentage: 8.1 },
@@ -157,8 +223,7 @@ const expenseReportData = {
   total: 18480
 };
 
-// Sample Revenue Report Data
-const revenueReportData = {
+const revenueReportData: RevenueReportData = {
   categories: [
     { name: 'Services', amount: 39000, percentage: 77.6 },
     { name: 'Products', amount: 6230, percentage: 12.4 },
@@ -233,7 +298,7 @@ export default function ReportsPage(): React.JSX.Element {
     
     // Simulate API call with timeout
     setTimeout(() => {
-      let reportData: Record<string, any> = {};
+      let reportData: ReportDataContent;
       
       // Return different data based on report type
       switch (selectedReportType) {
@@ -252,6 +317,8 @@ export default function ReportsPage(): React.JSX.Element {
         case 'revenue-report':
           reportData = revenueReportData;
           break;
+        default:
+          reportData = incomeStatementData;
       }
       
       // Format dates for display
@@ -357,7 +424,7 @@ export default function ReportsPage(): React.JSX.Element {
   // Render Income Statement
   const renderIncomeStatement = () => {
     if (!generatedReport || !generatedReport.data) return null;
-    const data = generatedReport.data;
+    const data = generatedReport.data as IncomeStatementData;
     
     return (
       <div className="space-y-6">
@@ -376,7 +443,7 @@ export default function ReportsPage(): React.JSX.Element {
                   {Object.entries(data.revenue).map(([category, amount]) => (
                     <tr key={category}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">{category.replace(/-/g, ' ')}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount as number)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   <tr className="bg-gray-50">
@@ -404,7 +471,7 @@ export default function ReportsPage(): React.JSX.Element {
                   {Object.entries(data.expenses).map(([category, amount]) => (
                     <tr key={category}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">{category.replace(/-/g, ' ')}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount as number)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   <tr className="bg-gray-50">
@@ -451,7 +518,7 @@ export default function ReportsPage(): React.JSX.Element {
   // Render Balance Sheet
   const renderBalanceSheet = () => {
     if (!generatedReport || !generatedReport.data) return null;
-    const data = generatedReport.data;
+    const data = generatedReport.data as BalanceSheetData;
     
     return (
       <div className="space-y-6">
@@ -473,7 +540,7 @@ export default function ReportsPage(): React.JSX.Element {
                   {Object.entries(data.assets.current).map(([asset, amount]) => (
                     <tr key={asset}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">{asset.replace(/([A-Z])/g, ' $1').trim()}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount as number)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   
@@ -483,7 +550,7 @@ export default function ReportsPage(): React.JSX.Element {
                   {Object.entries(data.assets.fixed).map(([asset, amount]) => (
                     <tr key={asset}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">{asset.replace(/([A-Z])/g, ' $1').trim()}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount as number)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   
@@ -515,7 +582,7 @@ export default function ReportsPage(): React.JSX.Element {
                   {Object.entries(data.liabilities.current).map(([liability, amount]) => (
                     <tr key={liability}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">{liability.replace(/([A-Z])/g, ' $1').trim()}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount as number)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   
@@ -525,7 +592,7 @@ export default function ReportsPage(): React.JSX.Element {
                   {Object.entries(data.liabilities.longTerm).map(([liability, amount]) => (
                     <tr key={liability}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">{liability.replace(/([A-Z])/g, ' $1').trim()}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount as number)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   
@@ -535,7 +602,7 @@ export default function ReportsPage(): React.JSX.Element {
                   {Object.entries(data.equity).map(([item, amount]) => (
                     <tr key={item}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">{item.replace(/([A-Z])/g, ' $1').trim()}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount as number)}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   
@@ -579,7 +646,7 @@ export default function ReportsPage(): React.JSX.Element {
   // Render Cash Flow Statement
   const renderCashFlow = () => {
     if (!generatedReport || !generatedReport.data) return null;
-    const data = generatedReport.data;
+    const data = generatedReport.data as CashFlowData;
     
     return (
       <div className="space-y-6">
@@ -595,11 +662,11 @@ export default function ReportsPage(): React.JSX.Element {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {Object.entries(data.operating).map(([item, amount], index) => (
+                  {Object.entries(data.operating).map(([item, amount]) => (
                     item !== 'netCashFromOperating' ? (
                       <tr key={item}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">{item.replace(/([A-Z])/g, ' $1').trim()}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount as number)}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                       </tr>
                     ) : null
                   ))}
@@ -629,7 +696,7 @@ export default function ReportsPage(): React.JSX.Element {
                     item !== 'netCashFromInvesting' ? (
                       <tr key={item}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">{item.replace(/([A-Z])/g, ' $1').trim()}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount as number)}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                       </tr>
                     ) : null
                   ))}
@@ -659,7 +726,7 @@ export default function ReportsPage(): React.JSX.Element {
                     item !== 'netCashFromFinancing' ? (
                       <tr key={item}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">{item.replace(/([A-Z])/g, ' $1').trim()}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount as number)}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                       </tr>
                     ) : null
                   ))}
@@ -715,7 +782,7 @@ export default function ReportsPage(): React.JSX.Element {
   // Render Expense Report
   const renderExpenseReport = () => {
     if (!generatedReport || !generatedReport.data) return null;
-    const data = generatedReport.data;
+    const data = generatedReport.data as ExpenseReportData;
     
     return (
       <div className="space-y-6">
@@ -733,7 +800,7 @@ export default function ReportsPage(): React.JSX.Element {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {data.categories.map((category: any) => (
+                  {data.categories.map((category) => (
                     <tr key={category.name}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{category.name}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(category.amount)}</td>
@@ -776,7 +843,7 @@ export default function ReportsPage(): React.JSX.Element {
   // Render Revenue Report
   const renderRevenueReport = () => {
     if (!generatedReport || !generatedReport.data) return null;
-    const data = generatedReport.data;
+    const data = generatedReport.data as RevenueReportData;
     
     return (
       <div className="space-y-6">
@@ -794,7 +861,7 @@ export default function ReportsPage(): React.JSX.Element {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {data.categories.map((category: any) => (
+                  {data.categories.map((category) => (
                     <tr key={category.name}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{category.name}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(category.amount)}</td>
@@ -1102,11 +1169,11 @@ interface NavItemProps {
 
 function NavItem({ icon, text, active, whichPage }: NavItemProps): React.JSX.Element {
   let link = '/'
-  if (whichPage == "expenses") link = '/expenses'
-  if (whichPage == "budget") link = '/budget'
-  if (whichPage == "reports") link = '/reports'
-  if (whichPage == "revenue") link = '/revenue'
-  if (whichPage == "settings") link = '/settings'
+  if (whichPage === "expenses") link = '/expenses'
+  if (whichPage === "budget") link = '/budget'
+  if (whichPage === "reports") link = '/reports'
+  if (whichPage === "revenue") link = '/revenue'
+  if (whichPage === "settings") link = '/settings'
   return (
     <a 
       href={link}

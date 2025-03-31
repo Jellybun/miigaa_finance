@@ -643,7 +643,7 @@ export default function SettingsPage(): React.JSX.Element {
                                 Two-factor authentication is enabled
                               </p>
                               <p className="mt-1 text-sm text-blue-700">
-                                Your account is protected with an additional security layer. You'll need to enter a verification code from your mobile app when you sign in.
+                                Your account is protected with an additional security layer. You&apos;ll need to enter a verification code from your mobile app when you sign in.
                               </p>
                             </div>
                           </div>

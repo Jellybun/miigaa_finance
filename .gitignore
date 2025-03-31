@@ -19,6 +19,7 @@
 
 # production
 /build
+/app/server.ts
 
 # misc
 .DS_Store
