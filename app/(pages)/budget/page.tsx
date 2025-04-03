@@ -44,8 +44,8 @@ interface BudgetSummary {
   dailyBudget: number;
 }
 
-type TimePeriod = 'monthly' | 'quarterly' | 'yearly';
-type ViewMode = 'cards' | 'table';
+type TimePeriod = 'сараар' | 'улирлаар' | 'жилаар';
+type ViewMode = 'картууд' | 'хүснэгт';
 
 export default function BudgetPage(): React.JSX.Element {
   // State
@@ -53,12 +53,11 @@ export default function BudgetPage(): React.JSX.Element {
   const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
   const [editingCategoryId, setEditingCategoryId] = useState<number | null>(null);
   const [newBudgetAmount, setNewBudgetAmount] = useState<string>('');
-  const [selectedPeriod, setSelectedPeriod] = useState<TimePeriod>('monthly');
-  const [viewMode, setViewMode] = useState<ViewMode>('cards');
+  const [selectedPeriod, setSelectedPeriod] = useState<TimePeriod>('сараар');
+  const [viewMode, setViewMode] = useState<ViewMode>('картууд');
   const [sortField, setSortField] = useState<string>('name');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
   const [expandedCategories, setExpandedCategories] = useState<number[]>([]);
-  
   // Current month and year
   const currentDate = new Date();
   const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
@@ -68,7 +67,7 @@ export default function BudgetPage(): React.JSX.Element {
   const [budgetCategories, setBudgetCategories] = useState<BudgetCategory[]>([
     { 
       id: 1, 
-      name: 'Housing', 
+      name: 'Орон сууц', 
       icon: <Home className="w-5 h-5" />, 
       color: 'blue', 
       budgetAmount: 1500, 
@@ -78,7 +77,7 @@ export default function BudgetPage(): React.JSX.Element {
     },
     { 
       id: 2, 
-      name: 'Food & Dining', 
+      name: 'Хоол & Зоог', 
       icon: <DollarSign className="w-5 h-5" />, 
       color: 'green', 
       budgetAmount: 600, 
@@ -88,7 +87,7 @@ export default function BudgetPage(): React.JSX.Element {
     },
     { 
       id: 3, 
-      name: 'Transportation', 
+      name: 'Тээвэр', 
       icon: <CreditCard className="w-5 h-5" />, 
       color: 'orange', 
       budgetAmount: 400, 
@@ -98,7 +97,7 @@ export default function BudgetPage(): React.JSX.Element {
     },
     { 
       id: 4, 
-      name: 'Utilities', 
+      name: 'Ашиглалтын зардал', 
       icon: <Settings className="w-5 h-5" />, 
       color: 'yellow', 
       budgetAmount: 250, 
@@ -108,7 +107,7 @@ export default function BudgetPage(): React.JSX.Element {
     },
     { 
       id: 5, 
-      name: 'Entertainment', 
+      name: 'Чөлөөт цаг', 
       icon: <FileText className="w-5 h-5" />, 
       color: 'purple', 
       budgetAmount: 300, 
@@ -118,7 +117,7 @@ export default function BudgetPage(): React.JSX.Element {
     },
     { 
       id: 6, 
-      name: 'Healthcare', 
+      name: 'Эрүүл мэнд', 
       icon: <FileText className="w-5 h-5" />, 
       color: 'red', 
       budgetAmount: 200, 
@@ -128,7 +127,7 @@ export default function BudgetPage(): React.JSX.Element {
     },
     { 
       id: 7, 
-      name: 'Personal Care', 
+      name: 'Хувийн арчилгаа', 
       icon: <FileText className="w-5 h-5" />, 
       color: 'pink', 
       budgetAmount: 150, 
@@ -138,7 +137,7 @@ export default function BudgetPage(): React.JSX.Element {
     },
     { 
       id: 8, 
-      name: 'Education', 
+      name: 'Боловсрол', 
       icon: <FileText className="w-5 h-5" />, 
       color: 'indigo', 
       budgetAmount: 200, 
@@ -148,7 +147,7 @@ export default function BudgetPage(): React.JSX.Element {
     },
     { 
       id: 9, 
-      name: 'Savings', 
+      name: 'Хадгаламж', 
       icon: <DollarSign className="w-5 h-5" />, 
       color: 'cyan', 
       budgetAmount: 800, 
@@ -158,7 +157,7 @@ export default function BudgetPage(): React.JSX.Element {
     },
     { 
       id: 10, 
-      name: 'Miscellaneous', 
+      name: 'Төрөл бүрийн', 
       icon: <Settings className="w-5 h-5" />, 
       color: 'gray', 
       budgetAmount: 100, 
@@ -167,6 +166,7 @@ export default function BudgetPage(): React.JSX.Element {
       transactions: 4
     }
   ]);
+  
   
   // Calculate budget summary
   const calculateBudgetSummary = (): BudgetSummary => {
@@ -394,67 +394,68 @@ export default function BudgetPage(): React.JSX.Element {
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
           <div className="mb-6">
-            <h1 className="text-2xl font-semibold text-gray-800">Budget Management</h1>
-            <p className="text-gray-600 mt-1">Track and manage your spending across categories</p>
+          <h1 className="text-2xl font-semibold text-gray-800">Төсвийн удирдлага</h1>
+          <p className="text-gray-600 mt-1">Ангилал бүрээрээ зарлагаа хянаж, удирдаарай</p>
+
           </div>
           
           {/* Budget Period Selector */}
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 bg-white rounded-lg shadow p-4">
             <div className="flex items-center space-x-4">
-              <div className="flex items-center">
+                <div className="flex items-center">
                 <Calendar className="w-5 h-5 text-gray-500 mr-2" />
                 <span className="text-lg font-medium text-gray-800">
-                  {selectedPeriod === 'monthly' && `${currentMonth} ${currentYear}`}
-                  {selectedPeriod === 'quarterly' && `Q${Math.floor(currentDate.getMonth() / 3) + 1} ${currentYear}`}
-                  {selectedPeriod === 'yearly' && `${currentYear}`}
+                  {selectedPeriod === 'сараар' && `${currentMonth} ${currentYear}`}
+                  {selectedPeriod === 'улирлаар' && `Q${Math.floor(currentDate.getMonth() / 3) + 1} ${currentYear}`}
+                  {selectedPeriod === 'жилаар' && `${currentYear}`}
                 </span>
+                </div>
+                
+                <div className="flex space-x-1 ml-4">
+                <button 
+                  className={`px-3 py-1 text-sm rounded-md ${selectedPeriod === 'сараар' ? 'bg-blue-100 text-blue-800 font-medium' : 'bg-gray-100 text-gray-600'}`}
+                  onClick={() => setSelectedPeriod('сараар')}
+                >
+                  Сар бүр
+                </button>
+                <button 
+                  className={`px-3 py-1 text-sm rounded-md ${selectedPeriod === 'улирлаар' ? 'bg-blue-100 text-blue-800 font-medium' : 'bg-gray-100 text-gray-600'}`}
+                  onClick={() => setSelectedPeriod('улирлаар')}
+                >
+                  Улирал бүр
+                </button>
+                <button 
+                  className={`px-3 py-1 text-sm rounded-md ${selectedPeriod === 'жилаар' ? 'bg-blue-100 text-blue-800 font-medium' : 'bg-gray-100 text-gray-600'}`}
+                  onClick={() => setSelectedPeriod('жилаар')}
+                >
+                  Жил бүр
+                </button>
+                </div>
               </div>
               
-              <div className="flex space-x-1 ml-4">
+              <div className="mt-4 md:mt-0 flex items-center justify-between md:justify-end space-x-4">
+                <div className="flex space-x-1">
                 <button 
-                  className={`px-3 py-1 text-sm rounded-md ${selectedPeriod === 'monthly' ? 'bg-blue-100 text-blue-800 font-medium' : 'bg-gray-100 text-gray-600'}`}
-                  onClick={() => setSelectedPeriod('monthly')}
+                  className={`px-3 py-1 text-sm rounded-md ${viewMode === 'картууд' ? 'bg-blue-100 text-blue-800 font-medium' : 'bg-gray-100 text-gray-600'}`}
+                  onClick={() => setViewMode('картууд')}
                 >
-                  Monthly
+                  Картын Харагдац
                 </button>
                 <button 
-                  className={`px-3 py-1 text-sm rounded-md ${selectedPeriod === 'quarterly' ? 'bg-blue-100 text-blue-800 font-medium' : 'bg-gray-100 text-gray-600'}`}
-                  onClick={() => setSelectedPeriod('quarterly')}
+                  className={`px-3 py-1 text-sm rounded-md ${viewMode === 'хүснэгт' ? 'bg-blue-100 text-blue-800 font-medium' : 'bg-gray-100 text-gray-600'}`}
+                  onClick={() => setViewMode('хүснэгт')}
                 >
-                  Quarterly
-                </button>
-                <button 
-                  className={`px-3 py-1 text-sm rounded-md ${selectedPeriod === 'yearly' ? 'bg-blue-100 text-blue-800 font-medium' : 'bg-gray-100 text-gray-600'}`}
-                  onClick={() => setSelectedPeriod('yearly')}
-                >
-                  Yearly
-                </button>
-              </div>
-            </div>
-            
-            <div className="mt-4 md:mt-0 flex items-center justify-between md:justify-end space-x-4">
-              <div className="flex space-x-1">
-                <button 
-                  className={`px-3 py-1 text-sm rounded-md ${viewMode === 'cards' ? 'bg-blue-100 text-blue-800 font-medium' : 'bg-gray-100 text-gray-600'}`}
-                  onClick={() => setViewMode('cards')}
-                >
-                  Card View
-                </button>
-                <button 
-                  className={`px-3 py-1 text-sm rounded-md ${viewMode === 'table' ? 'bg-blue-100 text-blue-800 font-medium' : 'bg-gray-100 text-gray-600'}`}
-                  onClick={() => setViewMode('table')}
-                >
-                  Table View
+                  Хүснэгтийн Харагдац
                 </button>
               </div>
               
-              <button
+                <button
                 onClick={() => setIsAddModalOpen(true)}
                 className="inline-flex items-center px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
-              >
+                >
                 <Plus className="w-4 h-4 mr-1" />
-                Add Category
-              </button>
+                Ангилал Нэмэх
+                </button>
             </div>
           </div>
           
@@ -463,23 +464,23 @@ export default function BudgetPage(): React.JSX.Element {
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Total Budget</p>
-                  <p className="text-2xl font-semibold text-gray-800 mt-1">{formatCurrency(budgetSummary.totalBudget)}</p>
+                <p className="text-sm font-medium text-gray-500">Нийт төсөв</p>
+                <p className="text-2xl font-semibold text-gray-800 mt-1">{formatCurrency(budgetSummary.totalBudget)}</p>
                 </div>
                 <div className="p-3 rounded-full bg-blue-100">
                   <DollarSign className="w-6 h-6 text-blue-600" />
                 </div>
               </div>
               <div className="mt-4">
-                <span className="text-sm text-gray-500">For {selectedPeriod === 'monthly' ? 'this month' : selectedPeriod === 'quarterly' ? 'this quarter' : 'this year'}</span>
+                <span className="text-sm text-gray-500">{selectedPeriod === 'сараар' ? 'Энэ сар' : selectedPeriod === 'улирлаар' ? 'Энэ улирал' : 'Энэ жил'}-д зориулсан</span>
               </div>
             </div>
             
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Total Spent</p>
-                  <p className="text-2xl font-semibold text-gray-800 mt-1">{formatCurrency(budgetSummary.totalSpent)}</p>
+                <p className="text-sm font-medium text-gray-500">Нийт зарцуулалт</p>
+                <p className="text-2xl font-semibold text-gray-800 mt-1">{formatCurrency(budgetSummary.totalSpent)}</p>
                 </div>
                 <div className="p-3 rounded-full bg-red-100">
                   <CreditCard className="w-6 h-6 text-red-600" />
@@ -492,43 +493,43 @@ export default function BudgetPage(): React.JSX.Element {
                     style={{ width: `${Math.min(budgetSummary.percentageUsed, 100)}%` }}
                   ></div>
                 </div>
-                <span className="text-sm text-gray-500 mt-1">{budgetSummary.percentageUsed.toFixed(1)}% of budget used</span>
-              </div>
+                <span className="text-sm text-gray-500 mt-1">{budgetSummary.percentageUsed.toFixed(1)}% төсвийн зарцуулалт</span>
+                </div>
             </div>
             
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Remaining Budget</p>
-                  <p className="text-2xl font-semibold text-gray-800 mt-1">{formatCurrency(budgetSummary.remainingBudget)}</p>
+                <p className="text-sm font-medium text-gray-500">Үлдсэн төсөв</p>
+                <p className="text-2xl font-semibold text-gray-800 mt-1">{formatCurrency(budgetSummary.remainingBudget)}</p>
                 </div>
                 <div className="p-3 rounded-full bg-green-100">
                   <Check className="w-6 h-6 text-green-600" />
                 </div>
               </div>
               <div className="mt-4">
-                <span className="text-sm text-gray-500">{budgetSummary.daysRemaining} days remaining</span>
+              <span className="text-sm text-gray-500">{budgetSummary.daysRemaining} өдөр үлдсэн</span>
               </div>
             </div>
             
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Daily Budget</p>
-                  <p className="text-2xl font-semibold text-gray-800 mt-1">{formatCurrency(budgetSummary.dailyBudget)}</p>
+                <p className="text-sm font-medium text-gray-500">Өдрийн төсөв</p>
+                <p className="text-2xl font-semibold text-gray-800 mt-1">{formatCurrency(budgetSummary.dailyBudget)}</p>
                 </div>
                 <div className="p-3 rounded-full bg-yellow-100">
                   <Calendar className="w-6 h-6 text-yellow-600" />
                 </div>
               </div>
               <div className="mt-4">
-                <span className="text-sm text-gray-500">Safe daily spending limit</span>
+              <span className="text-sm text-gray-500">Аюулгүй өдөр тутмын зарлагын хязгаар</span>
               </div>
             </div>
           </div>
           
           {/* Budget Categories - Card View */}
-          {viewMode === 'cards' && (
+            {viewMode === 'картууд' && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
               {sortedCategories.map(category => (
                 <div 
@@ -556,7 +557,7 @@ export default function BudgetPage(): React.JSX.Element {
                     
                     <div className="grid grid-cols-2 gap-4 mb-4">
                       <div>
-                        <p className="text-sm font-medium text-gray-500">Budget</p>
+                        <p className="text-sm font-medium text-gray-500">Tөсөв</p>
                         {editingCategoryId === category.id ? (
                           <div className="flex mt-1">
                             <input
@@ -591,17 +592,17 @@ export default function BudgetPage(): React.JSX.Element {
                       </div>
                       
                       <div>
-                        <p className="text-sm font-medium text-gray-500">Spent</p>
-                        <p className="text-lg font-semibold text-gray-800 mt-1">{formatCurrency(category.actualSpent)}</p>
+                      <p className="text-sm font-medium text-gray-500">Зарцуулсан</p>
+                      <p className="text-lg font-semibold text-gray-800 mt-1">{formatCurrency(category.actualSpent)}</p>
                       </div>
                     </div>
                     
                     <div className="mb-1 flex justify-between items-center">
                       <span className="text-sm text-gray-500">
-                        {((category.actualSpent / category.budgetAmount) * 100).toFixed(1)}% used
+                      {((category.actualSpent / category.budgetAmount) * 100).toFixed(1)}% зарцуулсан
                       </span>
                       <span className="text-sm text-gray-500">
-                        {formatCurrency(category.budgetAmount - category.actualSpent)} left
+                      {formatCurrency(category.budgetAmount - category.actualSpent)} үлдсэн
                       </span>
                     </div>
                     
@@ -616,13 +617,13 @@ export default function BudgetPage(): React.JSX.Element {
                     {expandedCategories.includes(category.id) && (
                       <div className="mt-4 pt-4 border-t border-gray-200">
                         <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm text-gray-500">Previous Month</span>
-                          <span className="text-sm font-medium text-gray-900">{formatCurrency(category.previousMonthSpent)}</span>
+                        <span className="text-sm text-gray-500">Өмнөх сар</span>
+                        <span className="text-sm font-medium text-gray-900">{formatCurrency(category.previousMonthSpent)}</span>
                         </div>
                         
                         <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm text-gray-500">Month-over-month</span>
-                          {category.actualSpent > category.previousMonthSpent ? (
+                        <span className="text-sm text-gray-500">Сар бүрийн өсөлт</span>
+                        {category.actualSpent > category.previousMonthSpent ? (
                             <span className="text-sm font-medium text-red-600 flex items-center">
                               <ArrowUp className="w-3 h-3 mr-1" />
                               {formatCurrency(category.actualSpent - category.previousMonthSpent)}
@@ -636,8 +637,8 @@ export default function BudgetPage(): React.JSX.Element {
                         </div>
                         
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-gray-500">Transactions</span>
-                          <span className="text-sm font-medium text-gray-900">{category.transactions}</span>
+                        <span className="text-sm text-gray-500">Гүйлгээ</span>
+                        <span className="text-sm font-medium text-gray-900">{category.transactions}</span>
                         </div>
                       </div>
                     )}
@@ -648,7 +649,7 @@ export default function BudgetPage(): React.JSX.Element {
           )}
           
           {/* Budget Categories - Table View */}
-          {viewMode === 'table' && (
+            {viewMode === 'хүснэгт' && (
             <div className="bg-white rounded-lg shadow overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
@@ -702,23 +703,24 @@ export default function BudgetPage(): React.JSX.Element {
                         onClick={() => handleSort('percentage')}
                       >
                         <div className="flex items-center justify-end">
-                          % Used
-                          {sortField === 'percentage' && (
-                            sortDirection === 'asc' ? 
-                              <ArrowUp className="ml-1 h-4 w-4" /> : 
-                              <ArrowDown className="ml-1 h-4 w-4" />
-                          )}
-                        </div>
+                        % Зарцуулсан
+                      {sortField === 'percentage' && (
+                        sortDirection === 'asc' ? 
+                          <ArrowUp className="ml-1 h-4 w-4" /> : 
+                          <ArrowDown className="ml-1 h-4 w-4" />
+                      )}
+                      </div>
                       </th>
                       <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Remaining
+                        Үлдсэн
                       </th>
                       <th scope="col" className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Status
+                        Төлөв
                       </th>
                       <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Actions
+                        Үйлдлүүд
                       </th>
+
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
@@ -735,8 +737,8 @@ export default function BudgetPage(): React.JSX.Element {
                               </div>
                               <div className="ml-3">
                                 <div className="text-sm font-medium text-gray-900">{category.name}</div>
-                                <div className="text-xs text-gray-500">{category.transactions} transactions</div>
-                              </div>
+                                <div className="text-xs text-gray-500">{category.transactions} гүйлгээ</div>
+                                </div>
                             </div>
                           </td>
                           
@@ -848,13 +850,14 @@ export default function BudgetPage(): React.JSX.Element {
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                    <h3 className="text-lg leading-6 font-medium text-gray-900 mb-6">Add New Budget Category</h3>
+                  <h3 className="text-lg leading-6 font-medium text-gray-900 mb-6">Шинэ Төсвийн Ангилал Нэмэх</h3>
                     
                     <form className="space-y-4">
                       <div>
-                        <label htmlFor="category-name" className="block text-sm font-medium text-gray-700 mb-1">
-                          Category Name
-                        </label>
+                      <label htmlFor="category-name" className="block text-sm font-medium text-gray-700 mb-1">
+                        Ангиллын Нэр
+                      </label>
+
                         <input
                           type="text"
                           id="category-name"
@@ -867,7 +870,7 @@ export default function BudgetPage(): React.JSX.Element {
                       
                       <div>
                         <label htmlFor="budget-amount" className="block text-sm font-medium text-gray-700 mb-1">
-                          Budget Amount ($)
+                        Төсвийн Хэмжээ ($)
                         </label>
                         <input
                           type="number"
@@ -883,7 +886,7 @@ export default function BudgetPage(): React.JSX.Element {
                       
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Category Color
+                        Ангиллын Өнгө
                         </label>
                         <div className="grid grid-cols-5 gap-2">
                           {['blue', 'green', 'red', 'yellow', 'purple', 'pink', 'indigo', 'cyan', 'orange', 'gray'].map((color) => (
@@ -908,15 +911,15 @@ export default function BudgetPage(): React.JSX.Element {
                   className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={handleAddCategory}
                 >
-                  Add Category
+                Ангилал Нэмэх
                 </button>
                 <button 
                   type="button" 
                   className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                   onClick={() => setIsAddModalOpen(false)}
                 >
-                  Cancel
-                </button>
+  Цуцлах
+  </button>
               </div>
             </div>
           </div>

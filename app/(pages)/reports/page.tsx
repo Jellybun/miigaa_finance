@@ -211,25 +211,25 @@ const cashFlowData: CashFlowData = {
 
 const expenseReportData: ExpenseReportData = {
   categories: [
-    { name: 'Salaries', amount: 15000, percentage: 81.2 },
-    { name: 'Rent', amount: 1500, percentage: 8.1 },
-    { name: 'Utilities', amount: 500, percentage: 2.7 },
-    { name: 'Software', amount: 300, percentage: 1.6 },
-    { name: 'Marketing', amount: 350, percentage: 1.9 },
-    { name: 'Office Supplies', amount: 200, percentage: 1.1 },
-    { name: 'Travel', amount: 450, percentage: 2.4 },
-    { name: 'Other', amount: 180, percentage: 1.0 }
+    { name: 'Цалин хөлс', amount: 15000, percentage: 81.2 },
+    { name: 'Түрээс', amount: 1500, percentage: 8.1 },
+    { name: 'Коммунал', amount: 500, percentage: 2.7 },
+    { name: 'Програм хангамж', amount: 300, percentage: 1.6 },
+    { name: 'Маркетинг', amount: 350, percentage: 1.9 },
+    { name: 'Оффисын хэрэгсэл', amount: 200, percentage: 1.1 },
+    { name: 'Томилолт', amount: 450, percentage: 2.4 },
+    { name: 'Бусад', amount: 180, percentage: 1.0 }
   ],
   total: 18480
 };
 
 const revenueReportData: RevenueReportData = {
   categories: [
-    { name: 'Services', amount: 39000, percentage: 77.6 },
-    { name: 'Products', amount: 6230, percentage: 12.4 },
-    { name: 'Subscriptions', amount: 2500, percentage: 5.0 },
-    { name: 'Consulting', amount: 1800, percentage: 3.6 },
-    { name: 'Other', amount: 750, percentage: 1.5 }
+    { name: 'Үйлчилгээ', amount: 39000, percentage: 77.6 },
+    { name: 'Бүтээгдэхүүн', amount: 6230, percentage: 12.4 },
+    { name: 'Захиалга', amount: 2500, percentage: 5.0 },
+    { name: 'Зөвлөгөө', amount: 1800, percentage: 3.6 },
+    { name: 'Бусад', amount: 750, percentage: 1.5 }
   ],
   total: 50280
 };
@@ -251,44 +251,44 @@ export default function ReportsPage(): React.JSX.Element {
   const reportTypes: ReportType[] = [
     { 
       id: 'income-statement', 
-      name: 'Income Statement', 
-      description: 'Shows revenues, expenses, and profit over a specific period',
+      name: 'Орлогын тайлан', 
+      description: 'Орлого, зардал, ашгийг тодорхой хугацаанд харуулна',
       icon: <TrendingUp className="w-6 h-6 text-blue-500" />
     },
     { 
       id: 'balance-sheet', 
-      name: 'Balance Sheet', 
-      description: 'Shows assets, liabilities, and equity at a specific point in time',
+      name: 'Балансын тайлан', 
+      description: 'Хөрөнгө, өр төлбөр, өөрийн хөрөнгийг тодорхой цэг дээр харуулна',
       icon: <BarChart2 className="w-6 h-6 text-indigo-500" />
     },
     { 
       id: 'cash-flow', 
-      name: 'Cash Flow Statement', 
-      description: 'Shows cash inflows and outflows from operations, investing, and financing',
+      name: 'Мөнгөн урсгалын тайлан', 
+      description: 'Үйл ажиллагаа, хөрөнгө оруулалт, санхүүгийн мөнгөн урсгалыг харуулна',
       icon: <Activity className="w-6 h-6 text-green-500" />
     },
     { 
       id: 'expense-report', 
-      name: 'Expense Report', 
-      description: 'Detailed breakdown of all expenses by category',
+      name: 'Зардлын тайлан', 
+      description: 'Бүх зардлын дэлгэрэнгүй задаргаа ангилал тус бүрээр',
       icon: <CreditCard className="w-6 h-6 text-red-500" />
     },
     { 
       id: 'revenue-report', 
-      name: 'Revenue Report', 
-      description: 'Detailed breakdown of all revenue by source',
+      name: 'Орлогын дэлгэрэнгүй тайлан', 
+      description: 'Бүх орлогын дэлгэрэнгүй задаргаа эх үүсвэр тус бүрээр',
       icon: <DollarSign className="w-6 h-6 text-green-500" />
     }
   ];
   
   // Report Periods
   const reportPeriods: ReportPeriod[] = [
-    { id: 'current-month', name: 'Current Month', description: 'This month to date' },
-    { id: 'previous-month', name: 'Previous Month', description: 'Last month' },
-    { id: 'quarter-to-date', name: 'Quarter to Date', description: 'Current quarter' },
-    { id: 'year-to-date', name: 'Year to Date', description: 'This year to date' },
-    { id: 'last-year', name: 'Last Year', description: 'Previous fiscal year' },
-    { id: 'custom', name: 'Custom Range', description: 'Select specific start and end dates' }
+    { id: 'current-month', name: 'Энэ сар', description: 'Одоогийн сарын эхнээс өнөөдөр хүртэл' },
+    { id: 'previous-month', name: 'Өмнөх сар', description: 'Өнгөрсөн сар' },
+    { id: 'quarter-to-date', name: 'Улирлын эхнээс', description: 'Одоогийн улирал' },
+    { id: 'year-to-date', name: 'Оны эхнээс', description: 'Энэ оны эхнээс өнөөдөр хүртэл' },
+    { id: 'last-year', name: 'Өнгөрсөн жил', description: 'Өмнөх санхүүгийн жил' },
+    { id: 'custom', name: 'Тусгай хугацаа', description: 'Эхлэл ба төгсгөлийн огноог сонгоно уу' }
   ];
   
   // Handle report generation
@@ -417,7 +417,7 @@ export default function ReportsPage(): React.JSX.Element {
       case 'revenue-report':
         return renderRevenueReport();
       default:
-        return <div>Report type not supported</div>;
+        return <div>Тайлангийн төрөл дэмжигдэхгүй байна</div>;
     }
   };
   
@@ -429,25 +429,31 @@ export default function ReportsPage(): React.JSX.Element {
     return (
       <div className="space-y-6">
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Revenue</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Орлого</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ангилал</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Дүн</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {Object.entries(data.revenue).map(([category, amount]) => (
                     <tr key={category}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">{category.replace(/-/g, ' ')}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">
+                        {category === 'services' && 'Үйлчилгээ'}
+                        {category === 'products' && 'Бүтээгдэхүүн'}
+                        {category === 'subscriptions' && 'Захиалга'}
+                        {category === 'consulting' && 'Зөвлөгөө'}
+                        {category === 'other' && 'Бусад'}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   <tr className="bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Total Revenue</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Нийт орлого</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">{formatCurrency(data.summary.totalRevenue)}</td>
                   </tr>
                 </tbody>
@@ -457,25 +463,34 @@ export default function ReportsPage(): React.JSX.Element {
         </section>
         
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Expenses</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Зардал</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ангилал</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Дүн</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {Object.entries(data.expenses).map(([category, amount]) => (
                     <tr key={category}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">{category.replace(/-/g, ' ')}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">
+                        {category === 'salaries' && 'Цалин хөлс'}
+                        {category === 'rent' && 'Түрээс'}
+                        {category === 'utilities' && 'Коммунал'}
+                        {category === 'software' && 'Програм хангамж'}
+                        {category === 'marketing' && 'Маркетинг'}
+                        {category === 'office' && 'Оффис'}
+                        {category === 'travel' && 'Томилолт'}
+                        {category === 'other' && 'Бусад'}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   <tr className="bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Total Expenses</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Нийт зардал</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">{formatCurrency(data.summary.totalExpenses)}</td>
                   </tr>
                 </tbody>
@@ -485,25 +500,25 @@ export default function ReportsPage(): React.JSX.Element {
         </section>
         
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Summary</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Нэгтгэл</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <tbody className="bg-white divide-y divide-gray-200">
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Total Revenue</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Нийт орлого</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-green-600 font-bold">{formatCurrency(data.summary.totalRevenue)}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Total Expenses</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Нийт зардал</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-red-600 font-bold">{formatCurrency(data.summary.totalExpenses)}</td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-base font-bold text-gray-900">Net Income</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-base font-bold text-gray-900">Цэвэр ашиг</td>
                     <td className="px-6 py-4 whitespace-nowrap text-base text-right font-bold text-blue-600">{formatCurrency(data.summary.netIncome)}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Profit Margin</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Ашгийн хувь</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-medium text-gray-900">{data.summary.marginPercentage.toFixed(1)}%</td>
                   </tr>
                 </tbody>
@@ -523,39 +538,49 @@ export default function ReportsPage(): React.JSX.Element {
     return (
       <div className="space-y-6">
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Assets</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Хөрөнгө</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ангилал</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Дүн</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   <tr className="bg-gray-50">
-                    <td colSpan={2} className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Current Assets</td>
+                    <td colSpan={2} className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Эргэлтийн хөрөнгө</td>
                   </tr>
                   {Object.entries(data.assets.current).map(([asset, amount]) => (
                     <tr key={asset}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">{asset.replace(/([A-Z])/g, ' $1').trim()}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">
+                        {asset === 'cash' && 'Бэлэн мөнгө'}
+                        {asset === 'accountsReceivable' && 'Авлага'}
+                        {asset === 'inventory' && 'Бараа материал'}
+                        {asset === 'prepaidExpenses' && 'Урьдчилж төлсөн зардал'}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   
                   <tr className="bg-gray-50">
-                    <td colSpan={2} className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Fixed Assets</td>
+                    <td colSpan={2} className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Үндсэн хөрөнгө</td>
                   </tr>
                   {Object.entries(data.assets.fixed).map(([asset, amount]) => (
                     <tr key={asset}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">{asset.replace(/([A-Z])/g, ' $1').trim()}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">
+                        {asset === 'equipment' && 'Тоног төхөөрөмж'}
+                        {asset === 'furniture' && 'Тавилга'}
+                        {asset === 'vehicles' && 'Тээврийн хэрэгсэл'}
+                        {asset === 'accumulatedDepreciation' && 'Хуримтлагдсан элэгдэл'}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   
                   <tr className="bg-gray-100">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Total Assets</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Нийт хөрөнгө</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">{formatCurrency(data.summary.totalAssets)}</td>
                   </tr>
                 </tbody>
@@ -565,49 +590,59 @@ export default function ReportsPage(): React.JSX.Element {
         </section>
         
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Liabilities & Equity</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Өр төлбөр & Өөрийн хөрөнгө</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ангилал</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Дүн</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   <tr className="bg-gray-50">
-                    <td colSpan={2} className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Current Liabilities</td>
+                    <td colSpan={2} className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Богино хугацаат өр төлбөр</td>
                   </tr>
                   {Object.entries(data.liabilities.current).map(([liability, amount]) => (
                     <tr key={liability}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">{liability.replace(/([A-Z])/g, ' $1').trim()}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">
+                        {liability === 'accountsPayable' && 'Өглөг'}
+                        {liability === 'shortTermLoans' && 'Богино хугацаат зээл'}
+                        {liability === 'accruedExpenses' && 'Хуримтлагдсан зардал'}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   
                   <tr className="bg-gray-50">
-                    <td colSpan={2} className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Long-term Liabilities</td>
+                    <td colSpan={2} className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Урт хугацаат өр төлбөр</td>
                   </tr>
                   {Object.entries(data.liabilities.longTerm).map(([liability, amount]) => (
                     <tr key={liability}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">{liability.replace(/([A-Z])/g, ' $1').trim()}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">
+                        {liability === 'loans' && 'Зээл'}
+                        {liability === 'leases' && 'Түрээсийн гэрээ'}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   
                   <tr className="bg-gray-50">
-                    <td colSpan={2} className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Equity</td>
+                    <td colSpan={2} className="px-6 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Өөрийн хөрөнгө</td>
                   </tr>
                   {Object.entries(data.equity).map(([item, amount]) => (
                     <tr key={item}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">{item.replace(/([A-Z])/g, ' $1').trim()}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize pl-8">
+                        {item === 'ownersCapital' && 'Эзэмшигчийн хөрөнгө'}
+                        {item === 'retainedEarnings' && 'Хуримтлагдсан ашиг'}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                     </tr>
                   ))}
                   
                   <tr className="bg-gray-100">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Total Liabilities & Equity</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Нийт өр төлбөр & өөрийн хөрөнгө</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">{formatCurrency(data.summary.totalLiabilities + data.summary.totalEquity)}</td>
                   </tr>
                 </tbody>
@@ -617,21 +652,21 @@ export default function ReportsPage(): React.JSX.Element {
         </section>
         
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Summary</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Нэгтгэл</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <tbody className="bg-white divide-y divide-gray-200">
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Total Assets</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Нийт хөрөнгө</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 font-bold">{formatCurrency(data.summary.totalAssets)}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Total Liabilities</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Нийт өр төлбөр</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 font-bold">{formatCurrency(data.summary.totalLiabilities)}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Total Equity</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Нийт өөрийн хөрөнгө</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900 font-bold">{formatCurrency(data.summary.totalEquity)}</td>
                   </tr>
                 </tbody>
@@ -651,27 +686,33 @@ export default function ReportsPage(): React.JSX.Element {
     return (
       <div className="space-y-6">
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Operating Activities</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Үндсэн үйл ажиллагаа</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item</th>
-                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Үзүүлэлт</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Дүн</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {Object.entries(data.operating).map(([item, amount]) => (
                     item !== 'netCashFromOperating' ? (
                       <tr key={item}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">{item.replace(/([A-Z])/g, ' $1').trim()}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">
+                          {item === 'netIncome' && 'Цэвэр ашиг'}
+                          {item === 'depreciation' && 'Элэгдэл'}
+                          {item === 'accountsReceivableChange' && 'Авлагын өөрчлөлт'}
+                          {item === 'inventoryChange' && 'Бараа материалын өөрчлөлт'}
+                          {item === 'accountsPayableChange' && 'Өглөгийн өөрчлөлт'}
+                        </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                       </tr>
                     ) : null
                   ))}
                   <tr className="bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Net Cash from Operating Activities</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Үндсэн үйл ажиллагааны цэвэр мөнгөн урсгал</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">{formatCurrency(data.operating.netCashFromOperating)}</td>
                   </tr>
                 </tbody>
@@ -681,27 +722,30 @@ export default function ReportsPage(): React.JSX.Element {
         </section>
         
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Investing Activities</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Хөрөнгө оруулалтын үйл ажиллагаа</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item</th>
-                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Үзүүлэлт</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Дүн</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {Object.entries(data.investing).map(([item, amount]) => (
                     item !== 'netCashFromInvesting' ? (
                       <tr key={item}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">{item.replace(/([A-Z])/g, ' $1').trim()}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">
+                          {item === 'purchaseOfEquipment' && 'Тоног төхөөрөмж худалдан авах'}
+                          {item === 'saleOfAssets' && 'Хөрөнгө борлуулалт'}
+                        </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                       </tr>
                     ) : null
                   ))}
                   <tr className="bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Net Cash from Investing Activities</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Хөрөнгө оруулалтын цэвэр мөнгөн урсгал</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">{formatCurrency(data.investing.netCashFromInvesting)}</td>
                   </tr>
                 </tbody>
@@ -711,27 +755,31 @@ export default function ReportsPage(): React.JSX.Element {
         </section>
         
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Financing Activities</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Санхүүгийн үйл ажиллагаа</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item</th>
-                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Үзүүлэлт</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Дүн</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {Object.entries(data.financing).map(([item, amount]) => (
                     item !== 'netCashFromFinancing' ? (
                       <tr key={item}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">{item.replace(/([A-Z])/g, ' $1').trim()}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 capitalize">
+                          {item === 'loanRepayments' && 'Зээлийн төлбөр'}
+                          {item === 'ownerContributions' && 'Эзэмшигчийн хувь нэмэр'}
+                          {item === 'dividendsPaid' && 'Тараасан ногдол ашиг'}
+                        </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(amount)}</td>
                       </tr>
                     ) : null
                   ))}
                   <tr className="bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Net Cash from Financing Activities</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Санхүүгийн цэвэр мөнгөн урсгал</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">{formatCurrency(data.financing.netCashFromFinancing)}</td>
                   </tr>
                 </tbody>
@@ -741,33 +789,33 @@ export default function ReportsPage(): React.JSX.Element {
         </section>
         
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Summary</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Нэгтгэл</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <tbody className="bg-white divide-y divide-gray-200">
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Net Cash from Operating Activities</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Үндсэн үйл ажиллагааны цэвэр мөнгөн урсгал</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(data.operating.netCashFromOperating)}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Net Cash from Investing Activities</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Хөрөнгө оруулалтын цэвэр мөнгөн урсгал</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(data.investing.netCashFromInvesting)}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Net Cash from Financing Activities</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Санхүүгийн цэвэр мөнгөн урсгал</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(data.financing.netCashFromFinancing)}</td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Net Increase in Cash</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Мөнгөний цэвэр өсөлт</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">{formatCurrency(data.summary.netCashIncrease)}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Beginning Cash Balance</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Эхний мөнгөний үлдэгдэл</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-900">{formatCurrency(data.summary.beginningCashBalance)}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Ending Cash Balance</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Эцсийн мөнгөний үлдэгдэл</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">{formatCurrency(data.summary.endingCashBalance)}</td>
                   </tr>
                 </tbody>
@@ -787,16 +835,16 @@ export default function ReportsPage(): React.JSX.Element {
     return (
       <div className="space-y-6">
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Expense Breakdown</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Зардлын задаргаа</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Percentage</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Distribution</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ангилал</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Дүн</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Хувь</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Хуваарилалт</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -816,7 +864,7 @@ export default function ReportsPage(): React.JSX.Element {
                     </tr>
                   ))}
                   <tr className="bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Total Expenses</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Нийт зардал</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">{formatCurrency(data.total)}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">100.0%</td>
                     <td className="px-6 py-4 whitespace-nowrap"></td>
@@ -828,11 +876,11 @@ export default function ReportsPage(): React.JSX.Element {
         </section>
         
         <section className="bg-white overflow-hidden shadow rounded-lg p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Expense Distribution</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-4">Зардлын хуваарилалт</h3>
           <div className="h-80 flex items-center justify-center">
             <div className="text-center text-gray-500">
-              <p>Pie chart visualization would appear here</p>
-              <p className="text-sm mt-2">Showing relative expense distribution by category</p>
+              <p>Дугуй диаграм энд харагдах байсан</p>
+              <p className="text-sm mt-2">Ангилал тус бүрээр зардлын харьцаанг харуулах</p>
             </div>
           </div>
         </section>
@@ -848,16 +896,16 @@ export default function ReportsPage(): React.JSX.Element {
     return (
       <div className="space-y-6">
         <section>
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Revenue Breakdown</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-3">Орлогын задаргаа</h3>
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Percentage</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Distribution</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ангилал</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Дүн</th>
+                    <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Хувь</th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Хуваарилалт</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -877,7 +925,7 @@ export default function ReportsPage(): React.JSX.Element {
                     </tr>
                   ))}
                   <tr className="bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Total Revenue</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">Нийт орлого</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">{formatCurrency(data.total)}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-right text-gray-900">100.0%</td>
                     <td className="px-6 py-4 whitespace-nowrap"></td>
@@ -889,11 +937,11 @@ export default function ReportsPage(): React.JSX.Element {
         </section>
         
         <section className="bg-white overflow-hidden shadow rounded-lg p-6">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Revenue Distribution</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-4">Орлогын хуваарилалт</h3>
           <div className="h-80 flex items-center justify-center">
             <div className="text-center text-gray-500">
-              <p>Pie chart visualization would appear here</p>
-              <p className="text-sm mt-2">Showing relative revenue distribution by category</p>
+              <p>Дугуй диаграм энд харагдах байсан</p>
+              <p className="text-sm mt-2">Ангилал тус бүрээр орлогын харьцаанг харуулах</p>
             </div>
           </div>
         </section>
@@ -920,7 +968,7 @@ export default function ReportsPage(): React.JSX.Element {
         <div className="flex items-center justify-between h-16 px-6 border-b">
           <div className="flex items-center">
             <DollarSign className="w-6 h-6 text-blue-600" />
-            <span className="ml-2 text-xl font-semibold text-gray-800">FinTrack</span>
+            <span className="ml-2 text-xl font-semibold text-gray-800">СанХүрээ</span>
           </div>
           <button 
             className="p-1 rounded-md lg:hidden" 
@@ -932,12 +980,12 @@ export default function ReportsPage(): React.JSX.Element {
         
         <nav className="mt-6 px-4">
           <div className="space-y-4">
-            <NavItem icon={<Home className="w-5 h-5" />} text="Dashboard" active={false} whichPage="dashboard" />
-            <NavItem icon={<CreditCard className="w-5 h-5" />} text="Expenses" active={false} whichPage="expenses" />
-            <NavItem icon={<DollarSign className="w-5 h-5" />} text="Revenue" active={false} whichPage="revenue" />
-            <NavItem icon={<PieChart className="w-5 h-5" />} text="Budget" active={false} whichPage="budget" />
-            <NavItem icon={<FileText className="w-5 h-5" />} text="Reports" active={true} whichPage="reports" />
-            <NavItem icon={<Settings className="w-5 h-5" />} text="Settings" active={false} whichPage="settings" />
+            <NavItem icon={<Home className="w-5 h-5" />} text="Үндсэн" active={false} whichPage="dashboard" />
+            <NavItem icon={<CreditCard className="w-5 h-5" />} text="Зардал" active={false} whichPage="expenses" />
+            <NavItem icon={<DollarSign className="w-5 h-5" />} text="Орлого" active={false} whichPage="revenue" />
+            <NavItem icon={<PieChart className="w-5 h-5" />} text="Төсөв" active={false} whichPage="budget" />
+            <NavItem icon={<FileText className="w-5 h-5" />} text="Тайлан" active={true} whichPage="reports" />
+            <NavItem icon={<Settings className="w-5 h-5" />} text="Тохиргоо" active={false} whichPage="settings" />
           </div>
         </nav>
       </aside>
@@ -963,9 +1011,9 @@ export default function ReportsPage(): React.JSX.Element {
                   <img 
                     className="h-8 w-8 rounded-full object-cover"
                     src="/api/placeholder/32/32" 
-                    alt="User profile" 
+                    alt="Хэрэглэгчийн профайл" 
                   />
-                  <span className="ml-2 text-gray-700 font-medium hidden md:block">John Doe</span>
+                  <span className="ml-2 text-gray-700 font-medium hidden md:block">Бат Болд</span>
                 </button>
               </div>
             </div>
@@ -975,18 +1023,18 @@ export default function ReportsPage(): React.JSX.Element {
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
           <div className="mb-6">
-            <h1 className="text-2xl font-semibold text-gray-800">Financial Reports</h1>
-            <p className="text-gray-600 mt-1">Generate and view detailed financial reports</p>
+            <h1 className="text-2xl font-semibold text-gray-800">Санхүүгийн тайлан</h1>
+            <p className="text-gray-600 mt-1">Дэлгэрэнгүй санхүүгийн тайланг гаргаж, харах</p>
           </div>
           
           {showFilters ? (
             <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-              <h2 className="text-lg font-medium text-gray-900 mb-6">Generate a Report</h2>
+              <h2 className="text-lg font-medium text-gray-900 mb-6">Тайлан үүсгэх</h2>
               
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Report Type Selection */}
                 <div>
-                  <h3 className="text-sm font-medium text-gray-700 mb-3">Report Type</h3>
+                  <h3 className="text-sm font-medium text-gray-700 mb-3">Тайлангийн төрөл</h3>
                   <div className="space-y-4">
                     {reportTypes.map((type) => (
                       <div 
@@ -1013,7 +1061,7 @@ export default function ReportsPage(): React.JSX.Element {
                 {/* Date Range Selection */}
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-3">Report Period</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-3">Тайлангийн хугацаа</h3>
                     <div className="grid grid-cols-2 gap-4">
                       {reportPeriods.map((period) => (
                         <div 
@@ -1037,10 +1085,10 @@ export default function ReportsPage(): React.JSX.Element {
                   {/* Custom Date Range Section */}
                   {selectedPeriod === 'custom' && (
                     <div>
-                      <h3 className="text-sm font-medium text-gray-700 mb-3">Custom Date Range</h3>
+                      <h3 className="text-sm font-medium text-gray-700 mb-3">Тусгай хугацаа</h3>
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label htmlFor="start-date" className="block text-xs text-gray-500 mb-1">Start Date</label>
+                          <label htmlFor="start-date" className="block text-xs text-gray-500 mb-1">Эхлэх огноо</label>
                           <input
                             type="date"
                             id="start-date"
@@ -1050,7 +1098,7 @@ export default function ReportsPage(): React.JSX.Element {
                           />
                         </div>
                         <div>
-                          <label htmlFor="end-date" className="block text-xs text-gray-500 mb-1">End Date</label>
+                          <label htmlFor="end-date" className="block text-xs text-gray-500 mb-1">Дуусах огноо</label>
                           <input
                             type="date"
                             id="end-date"
@@ -1076,12 +1124,12 @@ export default function ReportsPage(): React.JSX.Element {
                       {isGenerating ? (
                         <>
                           <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-                          Generating Report...
+                          Тайлан үүсгэж байна...
                         </>
                       ) : (
                         <>
                           <FileText className="w-4 h-4 mr-2" />
-                          Generate Report
+                          Тайлан үүсгэх
                         </>
                       )}
                     </button>
@@ -1105,7 +1153,7 @@ export default function ReportsPage(): React.JSX.Element {
                     </div>
                     <div className="flex items-center mt-1 text-sm text-gray-500">
                       <Clock className="w-4 h-4 mr-1" />
-                      <span>Generated: {generatedReport.generatedAt}</span>
+                      <span>Үүсгэсэн: {generatedReport.generatedAt}</span>
                     </div>
                   </div>
                   
@@ -1115,19 +1163,19 @@ export default function ReportsPage(): React.JSX.Element {
                       className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                     >
                       <FileText className="w-4 h-4 mr-1" />
-                      New Report
+                      Шинэ тайлан
                     </button>
                     <button className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                       <Printer className="w-4 h-4 mr-1" />
-                      Print
+                      Хэвлэх
                     </button>
                     <button className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                       <Download className="w-4 h-4 mr-1" />
-                      Export
+                      Татах
                     </button>
                     <button className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                       <Share2 className="w-4 h-4 mr-1" />
-                      Share
+                      Хуваалцах
                     </button>
                   </div>
                 </div>
@@ -1142,14 +1190,14 @@ export default function ReportsPage(): React.JSX.Element {
           {!generatedReport && !showFilters && (
             <div className="bg-white rounded-lg shadow-lg p-12 flex flex-col items-center justify-center text-center">
               <FileText className="w-16 h-16 text-gray-400 mb-4" />
-              <h2 className="text-xl font-medium text-gray-900 mb-2">No Report Generated</h2>
-              <p className="text-gray-500 max-w-md mb-6">Select a report type and date range to generate your financial report.</p>
+              <h2 className="text-xl font-medium text-gray-900 mb-2">Үүсгэсэн тайлан байхгүй байна</h2>
+              <p className="text-gray-500 max-w-md mb-6">Тайлангийн төрөл болон хугацааг сонгож санхүүгийн тайлан үүсгэнэ үү.</p>
               <button
                 onClick={() => setShowFilters(true)}
                 className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 <FileText className="w-4 h-4 mr-2" />
-                Generate a Report
+                Тайлан үүсгэх
               </button>
             </div>
           )}

@@ -75,29 +75,28 @@ export default function ExpensesPage(): React.JSX.Element {
   
   // Sample data
   const categories: Category[] = [
-    { id: 1, name: 'Office Supplies', color: 'blue' },
-    { id: 2, name: 'Software', color: 'purple' },
-    { id: 3, name: 'Utilities', color: 'green' },
-    { id: 4, name: 'Travel', color: 'orange' },
-    { id: 5, name: 'Marketing', color: 'pink' },
-    { id: 6, name: 'Rent', color: 'red' },
-    { id: 7, name: 'Meals', color: 'yellow' },
-    { id: 8, name: 'Hardware', color: 'indigo' },
+    { id: 1, name: 'Оффисын хэрэгсэл', color: 'blue' },
+    { id: 2, name: 'Програм хангамж', color: 'purple' },
+    { id: 3, name: 'Үйлчилгээ', color: 'green' },
+    { id: 4, name: 'Аялал', color: 'orange' },
+    { id: 5, name: 'Маркетинг', color: 'pink' },
+    { id: 6, name: 'Түрээс', color: 'red' },
+    { id: 7, name: 'Хоол', color: 'yellow' },
+    { id: 8, name: 'Техник хангамж', color: 'indigo' },
   ];
-  
   const expenses: Expense[] = [
-    { id: 1, date: '2025-03-29', description: 'Office Supplies - Printer Paper', amount: 45.99, category: 'Office Supplies', paymentMethod: 'Credit Card', status: 'completed' },
-    { id: 2, date: '2025-03-28', description: 'Adobe Creative Cloud Subscription', amount: 52.99, category: 'Software', paymentMethod: 'Credit Card', status: 'completed' },
-    { id: 3, date: '2025-03-25', description: 'Electricity Bill', amount: 175.45, category: 'Utilities', paymentMethod: 'Bank Transfer', status: 'completed' },
-    { id: 4, date: '2025-03-22', description: 'Business Lunch - Client Meeting', amount: 87.65, category: 'Meals', paymentMethod: 'Credit Card', status: 'completed' },
-    { id: 5, date: '2025-03-20', description: 'Google Workspace Subscription', amount: 18.00, category: 'Software', paymentMethod: 'Credit Card', status: 'completed' },
-    { id: 6, date: '2025-03-18', description: 'Office Rent - April', amount: 1500.00, category: 'Rent', paymentMethod: 'Bank Transfer', status: 'pending' },
-    { id: 7, date: '2025-03-15', description: 'Facebook Ads', amount: 350.00, category: 'Marketing', paymentMethod: 'Credit Card', status: 'completed' },
-    { id: 8, date: '2025-03-12', description: 'New Monitor - Dell 27"', amount: 329.99, category: 'Hardware', paymentMethod: 'Credit Card', status: 'completed' },
-    { id: 9, date: '2025-03-10', description: 'Internet Service - April', amount: 89.99, category: 'Utilities', paymentMethod: 'Bank Transfer', status: 'pending' },
-    { id: 10, date: '2025-03-05', description: 'Hotel - Business Trip', amount: 435.80, category: 'Travel', paymentMethod: 'Credit Card', status: 'completed' },
-    { id: 11, date: '2025-03-05', description: 'Flight Tickets - Business Trip', amount: 578.50, category: 'Travel', paymentMethod: 'Credit Card', status: 'completed' },
-    { id: 12, date: '2025-03-02', description: 'Office Cleaning Service', amount: 120.00, category: 'Office Supplies', paymentMethod: 'Bank Transfer', status: 'cancelled' },
+    { id: 1, date: '2025-03-29', description: 'Оффисын хэрэгсэл - Принтерийн цаас', amount: 45.99, category: 'Оффисын хэрэгсэл', paymentMethod: 'Кредит карт', status: 'completed' },
+    { id: 2, date: '2025-03-28', description: 'Adobe Creative Cloud захиалга', amount: 52.99, category: 'Програм хангамж', paymentMethod: 'Кредит карт', status: 'completed' },
+    { id: 3, date: '2025-03-25', description: 'Цахилгааны төлбөр', amount: 175.45, category: 'Үйлчилгээ', paymentMethod: 'Банкны шилжүүлэг', status: 'completed' },
+    { id: 4, date: '2025-03-22', description: 'Бизнесийн үдийн хоол - Үйлчлүүлэгчтэй уулзалт', amount: 87.65, category: 'Хоол', paymentMethod: 'Кредит карт', status: 'completed' },
+    { id: 5, date: '2025-03-20', description: 'Google Workspace захиалга', amount: 18.00, category: 'Програм хангамж', paymentMethod: 'Кредит карт', status: 'completed' },
+    { id: 6, date: '2025-03-18', description: 'Оффисын түрээс - 4 сар', amount: 1500.00, category: 'Түрээс', paymentMethod: 'Банкны шилжүүлэг', status: 'pending' },
+    { id: 7, date: '2025-03-15', description: 'Facebook зар сурталчилгаа', amount: 350.00, category: 'Маркетинг', paymentMethod: 'Кредит карт', status: 'completed' },
+    { id: 8, date: '2025-03-12', description: 'Шинэ дэлгэц - Dell 27"', amount: 329.99, category: 'Техник хангамж', paymentMethod: 'Кредит карт', status: 'completed' },
+    { id: 9, date: '2025-03-10', description: 'Интернет үйлчилгээ - 4 сар', amount: 89.99, category: 'Үйлчилгээ', paymentMethod: 'Банкны шилжүүлэг', status: 'pending' },
+    { id: 10, date: '2025-03-05', description: 'Зочид буудал - Бизнес аялал', amount: 435.80, category: 'Аялал', paymentMethod: 'Кредит карт', status: 'completed' },
+    { id: 11, date: '2025-03-05', description: 'Онгоцны билет - Бизнес аялал', amount: 578.50, category: 'Аялал', paymentMethod: 'Кредит карт', status: 'completed' },
+    { id: 12, date: '2025-03-02', description: 'Оффисын цэвэрлэгээний үйлчилгээ', amount: 120.00, category: 'Оффисын хэрэгсэл', paymentMethod: 'Банкны шилжүүлэг', status: 'cancelled' },
   ];
   
   // Constants
@@ -257,14 +256,14 @@ export default function ExpensesPage(): React.JSX.Element {
         </div>
         
         <nav className="mt-6 px-4">
-          <div className="space-y-4">
-            <NavItem icon={<Home className="w-5 h-5" />} text="Dashboard" active={false} whichPage="dashboard" />
-            <NavItem icon={<CreditCard className="w-5 h-5" />} text="Expenses" active={true} whichPage="expenses" />
-            <NavItem icon={<DollarSign className="w-5 h-5" />} text="Revenue" active={false} whichPage="revenue" />
-            <NavItem icon={<PieChart className="w-5 h-5" />} text="Budget" active={false} whichPage="budget" />
-            <NavItem icon={<FileText className="w-5 h-5" />} text="Reports" active={false} whichPage="reports" />
-            <NavItem icon={<Settings className="w-5 h-5" />} text="Settings" active={false} whichPage="settings" />
-          </div>
+            <div className="space-y-4">
+            <NavItem icon={<Home className="w-5 h-5" />} text="Хяналтын самбар" active={false} whichPage="dashboard" />
+            <NavItem icon={<CreditCard className="w-5 h-5" />} text="Зарлагууд" active={true} whichPage="expenses" />
+            <NavItem icon={<DollarSign className="w-5 h-5" />} text="Орлого" active={false} whichPage="revenue" />
+            <NavItem icon={<PieChart className="w-5 h-5" />} text="Төсөв" active={false} whichPage="budget" />
+            <NavItem icon={<FileText className="w-5 h-5" />} text="Тайлангууд" active={false} whichPage="reports" />
+            <NavItem icon={<Settings className="w-5 h-5" />} text="Тохиргоо" active={false} whichPage="settings" />
+            </div>
         </nav>
       </aside>
 
@@ -284,63 +283,63 @@ export default function ExpensesPage(): React.JSX.Element {
               <button className="p-1 mr-4 rounded-full text-gray-500 hover:bg-gray-100">
                 <Bell className="w-5 h-5" />
               </button>
-              <div className="relative">
+                <div className="relative">
                 <button className="flex items-center text-sm focus:outline-none">
                   <img 
-                    className="h-8 w-8 rounded-full object-cover"
-                    src="/api/placeholder/32/32" 
-                    alt="User profile" 
+                  className="h-8 w-8 rounded-full object-cover"
+                  src="/api/placeholder/32/32" 
+                  alt="Хэрэглэгчийн профайл" 
                   />
-                  <span className="ml-2 text-gray-700 font-medium hidden md:block">John Doe</span>
+                  <span className="ml-2 text-gray-700 font-medium hidden md:block">Жон До</span>
                 </button>
+                </div>
               </div>
-            </div>
-          </div>
-        </header>
+              </div>
+            </header>
 
-        {/* Main Content */}
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
-          <div className="mb-6">
-            <h1 className="text-2xl font-semibold text-gray-800">Expenses</h1>
-            <p className="text-gray-600 mt-1">Manage and track your business expenses</p>
+            {/* Main Content */}
+            <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
+              <div className="mb-6">
+              <h1 className="text-2xl font-semibold text-gray-800">Зарлагууд</h1>
+              <p className="text-gray-600 mt-1">Бизнесийнхээ зарлагыг удирдаж, хянаарай</p>
           </div>
           
           {/* Stats cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-sm font-medium text-gray-500">Total Expenses</p>
-                  <p className="text-2xl font-semibold text-gray-800 mt-1">${totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                </div>
-                <div className="p-3 rounded-full bg-blue-100">
-                  <CreditCard className="w-6 h-6 text-blue-600" />
-                </div>
+              <div>
+                <p className="text-sm font-medium text-gray-500">Нийт зарлага</p>
+                <p className="text-2xl font-semibold text-gray-800 mt-1">${totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+              </div>
+              <div className="p-3 rounded-full bg-blue-100">
+                <CreditCard className="w-6 h-6 text-blue-600" />
+              </div>
               </div>
               <div className="mt-4">
-                <span className="text-sm text-gray-500">Based on your current filters</span>
+              <span className="text-sm text-gray-500">Таны одоогийн шүүлтүүр дээр үндэслэн</span>
               </div>
             </div>
             
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-sm font-medium text-gray-500">Pending Expenses</p>
-                  <p className="text-2xl font-semibold text-gray-800 mt-1">${totalPendingAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                </div>
-                <div className="p-3 rounded-full bg-yellow-100">
-                  <Calendar className="w-6 h-6 text-yellow-600" />
-                </div>
+              <div>
+                <p className="text-sm font-medium text-gray-500">Хүлээгдэж буй зарлага</p>
+                <p className="text-2xl font-semibold text-gray-800 mt-1">${totalPendingAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+              </div>
+              <div className="p-3 rounded-full bg-yellow-100">
+                <Calendar className="w-6 h-6 text-yellow-600" />
+              </div>
               </div>
               <div className="mt-4">
-                <span className="text-sm text-gray-500">{filteredExpenses.filter(e => e.status === 'pending').length} pending transactions</span>
+              <span className="text-sm text-gray-500">{filteredExpenses.filter(e => e.status === 'pending').length} хүлээгдэж буй гүйлгээ</span>
               </div>
             </div>
             
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-sm font-medium text-gray-500">Average Expense</p>
+              <div>
+                <p className="text-sm font-medium text-gray-500">Дундаж зарлага</p>
                   <p className="text-2xl font-semibold text-gray-800 mt-1">
                     ${filteredExpenses.length ? 
                       (totalAmount / filteredExpenses.length).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : 
@@ -352,7 +351,7 @@ export default function ExpensesPage(): React.JSX.Element {
                 </div>
               </div>
               <div className="mt-4">
-                <span className="text-sm text-gray-500">For the selected period</span>
+                <span className="text-sm text-gray-500">Сонгосон хугацаанд</span>
               </div>
             </div>
           </div>
@@ -397,22 +396,22 @@ export default function ExpensesPage(): React.JSX.Element {
             {isFiltersOpen && (
               <div className="px-6 pb-6 border-t border-gray-200">
                 <div className="pt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {/* Date Range Filter */}
-                  <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">Date Range</h3>
+                    {/* Date Range Filter */}
+                    <div>
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">Огнооны хүрээ</h3>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="start-date" className="block text-sm text-gray-500 mb-1">Start Date</label>
-                        <input
-                          type="date"
-                          id="start-date"
-                          className="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                          value={dateRange.startDate}
-                          onChange={(e) => setDateRange(prev => ({ ...prev, startDate: e.target.value }))}
-                        />
+                      <label htmlFor="start-date" className="block text-sm text-gray-500 mb-1">Эхлэх огноо</label>
+                      <input
+                        type="date"
+                        id="start-date"
+                        className="block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        value={dateRange.startDate}
+                        onChange={(e) => setDateRange(prev => ({ ...prev, startDate: e.target.value }))}
+                      />
                       </div>
                       <div>
-                        <label htmlFor="end-date" className="block text-sm text-gray-500 mb-1">End Date</label>
+                      <label htmlFor="end-date" className="block text-sm text-gray-500 mb-1">Дуусах огноо</label>
                         <input
                           type="date"
                           id="end-date"
@@ -426,7 +425,7 @@ export default function ExpensesPage(): React.JSX.Element {
                   
                   {/* Category Filter */}
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">Categories</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">Ангиллууд</h3>
                     <div className="space-y-2 max-h-40 overflow-y-auto pr-2">
                       {categories.map(category => (
                         <div key={category.id} className="flex items-center">
@@ -448,7 +447,7 @@ export default function ExpensesPage(): React.JSX.Element {
                   
                   {/* Status Filter */}
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">Status</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">Төлөв</h3>
                     <div className="space-y-2">
                       {['pending', 'completed', 'cancelled'].map(status => (
                         <div key={status} className="flex items-center">
@@ -456,6 +455,7 @@ export default function ExpensesPage(): React.JSX.Element {
                             id={`status-${status}`}
                             type="checkbox"
                             className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                            
                             checked={selectedStatus.includes(status)}
                             onChange={() => handleStatusSelect(status)}
                           />
@@ -528,19 +528,19 @@ export default function ExpensesPage(): React.JSX.Element {
                       onClick={() => handleSort('category')}
                     >
                       <div className="flex items-center">
-                        Category
-                        {sortField === 'category' && (
-                          sortDirection === 'asc' ? 
-                            <ArrowUp className="ml-1 h-4 w-4" /> : 
-                            <ArrowDown className="ml-1 h-4 w-4" />
-                        )}
+                      Ангилал
+                      {sortField === 'category' && (
+                        sortDirection === 'asc' ? 
+                        <ArrowUp className="ml-1 h-4 w-4" /> : 
+                        <ArrowDown className="ml-1 h-4 w-4" />
+                      )}
                       </div>
                     </th>
                     <th 
                       scope="col" 
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Status
+                      Төлөв
                     </th>
                     <th 
                       scope="col" 
@@ -548,16 +548,16 @@ export default function ExpensesPage(): React.JSX.Element {
                       onClick={() => handleSort('amount')}
                     >
                       <div className="flex items-center justify-end">
-                        Amount
-                        {sortField === 'amount' && (
-                          sortDirection === 'asc' ? 
-                            <ArrowUp className="ml-1 h-4 w-4" /> : 
-                            <ArrowDown className="ml-1 h-4 w-4" />
-                        )}
+                      Дүн
+                      {sortField === 'amount' && (
+                        sortDirection === 'asc' ? 
+                        <ArrowUp className="ml-1 h-4 w-4" /> : 
+                        <ArrowDown className="ml-1 h-4 w-4" />
+                      )}
                       </div>
                     </th>
                     <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Actions
+                      Үйлдлүүд
                     </th>
                   </tr>
                 </thead>
@@ -600,9 +600,9 @@ export default function ExpensesPage(): React.JSX.Element {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={6} className="px-6 py-10 text-center text-sm text-gray-500">
-                        No expenses found matching your filters
-                      </td>
+                        <td colSpan={6} className="px-6 py-10 text-center text-sm text-gray-500">
+                        Таны шүүлтүүрт тохирох зарлага олдсонгүй
+                        </td>
                     </tr>
                   )}
                 </tbody>
@@ -615,11 +615,11 @@ export default function ExpensesPage(): React.JSX.Element {
                 <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                   <div>
                     <p className="text-sm text-gray-700">
-                      Showing <span className="font-medium">{(currentPage - 1) * ITEMS_PER_PAGE + 1}</span> to{' '}
+                      <span className="font-medium">{(currentPage - 1) * ITEMS_PER_PAGE + 1}</span> -{' '}
                       <span className="font-medium">
-                        {Math.min(currentPage * ITEMS_PER_PAGE, filteredExpenses.length)}
+                      {Math.min(currentPage * ITEMS_PER_PAGE, filteredExpenses.length)}
                       </span>{' '}
-                      of <span className="font-medium">{filteredExpenses.length}</span> results
+                      нийт <span className="font-medium">{filteredExpenses.length}</span> үр дүнгээс харуулж байна
                     </p>
                   </div>
                   <div>
@@ -633,7 +633,7 @@ export default function ExpensesPage(): React.JSX.Element {
                             : 'text-gray-500 hover:bg-gray-50'
                         }`}
                       >
-                        <span className="sr-only">Previous</span>
+                        <span className="sr-only">Өмнөх</span>
                         <ArrowLeft className="h-5 w-5" />
                       </button>
                       
@@ -664,7 +664,7 @@ export default function ExpensesPage(): React.JSX.Element {
                             : 'text-gray-500 hover:bg-gray-50'
                         }`}
                       >
-                        <span className="sr-only">Next</span>
+                        <span className="sr-only">Дараах</span>
                         <ArrowRight className="h-5 w-5" />
                       </button>
                     </nav>
@@ -690,25 +690,25 @@ export default function ExpensesPage(): React.JSX.Element {
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                    <h3 className="text-lg leading-6 font-medium text-gray-900 mb-6">Add New Expense</h3>
+                    <h3 className="text-lg leading-6 font-medium text-gray-900 mb-6">Шинэ зарлага нэмэх</h3>
                     
                     <form className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="expense-date" className="block text-sm font-medium text-gray-700 mb-1">
-                            Date
+                          Огноо
                           </label>
                           <input
-                            type="date"
-                            id="expense-date"
-                            name="expense-date"
-                            className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                            defaultValue={new Date().toISOString().split('T')[0]}
+                          type="date"
+                          id="expense-date"
+                          name="expense-date"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                          defaultValue={new Date().toISOString().split('T')[0]}
                           />
                         </div>
                         <div>
                           <label htmlFor="expense-amount" className="block text-sm font-medium text-gray-700 mb-1">
-                            Amount ($)
+                          Дүн ($)
                           </label>
                           <input
                             type="number"
@@ -722,113 +722,113 @@ export default function ExpensesPage(): React.JSX.Element {
                         </div>
                       </div>
                       
-                      <div>
+                        <div>
                         <label htmlFor="expense-description" className="block text-sm font-medium text-gray-700 mb-1">
-                          Description
+                          Тайлбар
                         </label>
                         <input
                           type="text"
                           id="expense-description"
                           name="expense-description"
-                          placeholder="Enter expense description"
+                          placeholder="Зарлагын тайлбарыг оруулна уу"
                           className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
                         />
-                      </div>
-                      
-                      <div className="grid grid-cols-2 gap-4">
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="expense-category" className="block text-sm font-medium text-gray-700 mb-1">
-                            Category
+                          Ангилал
                           </label>
                           <select
-                            id="expense-category"
-                            name="expense-category"
-                            className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                          id="expense-category"
+                          name="expense-category"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           >
-                            <option value="">Select a category</option>
-                            {categories.map(category => (
-                              <option key={category.id} value={category.id}>{category.name}</option>
-                            ))}
+                          <option value="">Ангилал сонгоно уу</option>
+                          {categories.map(category => (
+                            <option key={category.id} value={category.id}>{category.name}</option>
+                          ))}
                           </select>
                         </div>
                         <div>
                           <label htmlFor="expense-payment-method" className="block text-sm font-medium text-gray-700 mb-1">
-                            Payment Method
+                          Төлбөрийн арга
                           </label>
-                          <select
+                            <select
                             id="expense-payment-method"
                             name="expense-payment-method"
                             className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                          >
-                            <option value="">Select payment method</option>
-                            <option value="Credit Card">Credit Card</option>
-                            <option value="Debit Card">Debit Card</option>
-                            <option value="Bank Transfer">Bank Transfer</option>
-                            <option value="Cash">Cash</option>
+                            >
+                            <option value="">Төлбөрийн арга сонгоно уу</option>
+                            <option value="Credit Card">Кредит карт</option>
+                            <option value="Debit Card">Дебит карт</option>
+                            <option value="Bank Transfer">Банкны шилжүүлэг</option>
+                            <option value="Cash">Бэлэн мөнгө</option>
                             <option value="PayPal">PayPal</option>
-                            <option value="Other">Other</option>
+                            <option value="Other">Бусад</option>
+                            </select>
+                          </div>
+                          </div>
+                          
+                          <div>
+                          <label htmlFor="expense-status" className="block text-sm font-medium text-gray-700 mb-1">
+                            Төлөв
+                          </label>
+                          <select
+                            id="expense-status"
+                            name="expense-status"
+                            className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                          >
+                            <option value="completed">Дууссан</option>
+                            <option value="pending">Хүлээгдэж буй</option>
                           </select>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <label htmlFor="expense-status" className="block text-sm font-medium text-gray-700 mb-1">
-                          Status
-                        </label>
-                        <select
-                          id="expense-status"
-                          name="expense-status"
-                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                        >
-                          <option value="completed">Completed</option>
-                          <option value="pending">Pending</option>
-                        </select>
-                      </div>
-                      
-                      <div>
-                        <label htmlFor="expense-notes" className="block text-sm font-medium text-gray-700 mb-1">
-                          Notes (Optional)
-                        </label>
-                        <textarea
-                          id="expense-notes"
-                          name="expense-notes"
-                          rows={3}
-                          placeholder="Add any additional information about this expense"
-                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Upload Receipt (Optional)
-                        </label>
+                          </div>
+                          
+                          <div>
+                          <label htmlFor="expense-notes" className="block text-sm font-medium text-gray-700 mb-1">
+                            Тэмдэглэл (Сонголттой)
+                          </label>
+                          <textarea
+                            id="expense-notes"
+                            name="expense-notes"
+                            rows={3}
+                            placeholder="Энэ зарлагын талаар нэмэлт мэдээлэл оруулна уу"
+                            className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                          />
+                          </div>
+                          
+                          <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">
+                            Баримт оруулах (Сонголттой)
+                          </label>
                         <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                           <div className="space-y-1 text-center">
-                            <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                              <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                            <div className="flex text-sm text-gray-600">
-                              <label htmlFor="file-upload" className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
-                                <span>Upload a file</span>
-                                <input id="file-upload" name="file-upload" type="file" className="sr-only" />
-                              </label>
-                              <p className="pl-1">or drag and drop</p>
-                            </div>
-                            <p className="text-xs text-gray-500">PNG, JPG, PDF up to 10MB</p>
+                          <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          <div className="flex text-sm text-gray-600">
+                            <label htmlFor="file-upload" className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                            <span>Файл оруулах</span>
+                            <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                            </label>
+                            <p className="pl-1">эсвэл чирж оруулна уу</p>
+                          </div>
+                          <p className="text-xs text-gray-500">PNG, JPG, PDF 10MB хүртэл</p>
                           </div>
                         </div>
+                        </div>
+                      </form>
                       </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
-                  Save Expense
-                </button>
-                <button type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onClick={() => setIsAddModalOpen(false)}>
-                  Cancel
-                </button>
+                    </div>
+                    </div>
+                    <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                      Зарлага хадгалах
+                    </button>
+                    <button type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onClick={() => setIsAddModalOpen(false)}>
+                      Болих
+                    </button>
               </div>
             </div>
           </div>

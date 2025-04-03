@@ -70,85 +70,84 @@ export default function SettingsPage(): React.JSX.Element {
   
   // User profile state
   const [userProfile, setUserProfile] = useState({
-    firstName: 'John',
-    lastName: 'Doe',
+    firstName: 'Жон',
+    lastName: 'Доу',
     email: 'john.doe@example.com',
     phone: '+1 (555) 123-4567',
-    company: 'Acme Corp',
-    jobTitle: 'Financial Manager',
+    company: 'Acme Корпораци',
+    jobTitle: 'Санхүүгийн менежер',
     timeZone: 'America/New_York',
-    language: 'English',
-    currency: 'USD'
+    language: 'Монгол',
+    currency: 'MNT'
   });
   
-  // Integration settings state
+  // Интеграцын тохиргооны төлөв
   const [integrations, setIntegrations] = useState<IntegrationItem[]>([
     { id: 'quickbooks', name: 'QuickBooks', logo: <Briefcase className="w-6 h-6" />, connected: true, lastSync: '2025-03-28T14:30:00' },
     { id: 'stripe', name: 'Stripe', logo: <CreditCardIcon className="w-6 h-6" />, connected: true, lastSync: '2025-03-29T09:15:00' },
     { id: 'paypal', name: 'PayPal', logo: <DollarSign className="w-6 h-6" />, connected: false },
     { id: 'xero', name: 'Xero', logo: <Database className="w-6 h-6" />, connected: false },
-    { id: 'bank', name: 'Bank Connection', logo: <CreditCardIcon className="w-6 h-6" />, connected: true, lastSync: '2025-03-30T08:45:00' },
+    { id: 'bank', name: 'Банкны холболт', logo: <CreditCardIcon className="w-6 h-6" />, connected: true, lastSync: '2025-03-30T08:45:00' },
   ]);
   
   // Notification settings state
   const [notificationSettings, setNotificationSettings] = useState<NotificationSetting[]>([
     { 
       id: 'budget-alerts', 
-      name: 'Budget Alerts', 
-      description: 'Get notified when you exceed budget limits', 
+      name: 'Төсвийн анхааруулга', 
+      description: 'Төсвийн хязгаарыг хэтрэх үед мэдэгдэл хүлээн авна', 
       email: true, 
       browser: true, 
       mobile: true 
     },
     { 
       id: 'payment-reminders', 
-      name: 'Payment Reminders', 
-      description: 'Reminders for upcoming bill payments', 
+      name: 'Төлбөрийн сануулга', 
+      description: 'Төлбөрийн хугацаа дөхөж буйг сануулна', 
       email: true, 
       browser: true, 
       mobile: false 
     },
     { 
       id: 'account-notifications', 
-      name: 'Account Notifications', 
-      description: 'Security and account-related notifications', 
+      name: 'Бүртгэлийн мэдэгдэл', 
+      description: 'Аюулгүй байдал болон бүртгэлтэй холбоотой мэдэгдэл', 
       email: true, 
       browser: false, 
       mobile: true 
     },
     { 
       id: 'report-ready', 
-      name: 'Reports Ready', 
-      description: 'Notification when scheduled reports are ready', 
+      name: 'Тайлан бэлэн болсон', 
+      description: 'Төлөвлөсөн тайлан бэлэн болсон үед мэдэгдэнэ', 
       email: true, 
       browser: false, 
       mobile: false 
     },
     { 
       id: 'new-features', 
-      name: 'New Features', 
-      description: 'Updates about new features and improvements', 
+      name: 'Шинэ боломжууд', 
+      description: 'Шинэ боломжууд болон сайжруулалтын тухай мэдээлэл', 
       email: false, 
       browser: true, 
       mobile: false 
     }
   ]);
   
-  // Active sessions
+  // Идэвхтэй сессүүд
   const activeSessions = [
-    { id: '1', device: 'Windows PC - Chrome', location: 'New York, USA', lastActive: '2025-03-30T10:25:00', current: true },
-    { id: '2', device: 'iPhone 16 - Safari', location: 'New York, USA', lastActive: '2025-03-29T18:12:00', current: false },
-    { id: '3', device: 'iPad Pro - Chrome', location: 'Boston, USA', lastActive: '2025-03-25T09:47:00', current: false }
+    { id: '1', device: 'Windows PC - Chrome', location: 'Нью Йорк, АНУ', lastActive: '2025-03-30T10:25:00', current: true },
+    { id: '2', device: 'iPhone 16 - Safari', location: 'Нью Йорк, АНУ', lastActive: '2025-03-29T18:12:00', current: false },
+    { id: '3', device: 'iPad Pro - Chrome', location: 'Бостон, АНУ', lastActive: '2025-03-25T09:47:00', current: false }
   ];
   
-  // Tabs for settings
+  // Тохиргооны табууд
   const tabs: TabItem[] = [
-    { id: 'profile', name: 'Profile', icon: <User className="w-5 h-5" /> },
-    { id: 'security', name: 'Security', icon: <Lock className="w-5 h-5" /> },
-    { id: 'integrations', name: 'Integrations', icon: <Link className="w-5 h-5" /> },
-    { id: 'notifications', name: 'Notifications', icon: <Bell className="w-5 h-5" /> }
+    { id: 'profile', name: 'Хувийн мэдээлэл', icon: <User className="w-5 h-5" /> },
+    { id: 'security', name: 'Аюулгүй байдал', icon: <Lock className="w-5 h-5" /> },
+    { id: 'integrations', name: 'Интеграцууд', icon: <Link className="w-5 h-5" /> },
+    { id: 'notifications', name: 'Мэдэгдэл', icon: <Bell className="w-5 h-5" /> }
   ];
-  
   // Toggle notification settings
   const toggleNotification = (id: string, channel: 'email' | 'browser' | 'mobile') => {
     setNotificationSettings(prev => 
@@ -269,25 +268,25 @@ export default function SettingsPage(): React.JSX.Element {
               <button className="p-1 mr-4 rounded-full text-gray-500 hover:bg-gray-100">
                 <Bell className="w-5 h-5" />
               </button>
-              <div className="relative">
+                <div className="relative">
                 <button className="flex items-center text-sm focus:outline-none">
                   <img 
-                    className="h-8 w-8 rounded-full object-cover"
-                    src="/api/placeholder/32/32" 
-                    alt="User profile" 
+                  className="h-8 w-8 rounded-full object-cover"
+                  src="/api/placeholder/32/32" 
+                  alt="Хэрэглэгчийн профайл" 
                   />
-                  <span className="ml-2 text-gray-700 font-medium hidden md:block">John Doe</span>
+                  <span className="ml-2 text-gray-700 font-medium hidden md:block">Жон Доу</span>
                 </button>
+                </div>
               </div>
-            </div>
-          </div>
-        </header>
+              </div>
+            </header>
 
-        {/* Main Content */}
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
-          <div className="mb-6">
-            <h1 className="text-2xl font-semibold text-gray-800">Settings</h1>
-            <p className="text-gray-600 mt-1">Manage your account preferences and settings</p>
+            {/* Main Content */}
+            <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
+              <div className="mb-6">
+              <h1 className="text-2xl font-semibold text-gray-800">Тохиргоо</h1>
+              <p className="text-gray-600 mt-1">Өөрийн бүртгэлийн тохиргоо болон сонголтуудыг удирдах</p>
           </div>
           
           {/* Settings Container */}
@@ -318,9 +317,9 @@ export default function SettingsPage(): React.JSX.Element {
                       className="flex items-center px-4 py-3 text-sm font-medium rounded-md w-full text-red-600 hover:bg-red-50"
                     >
                       <span className="mr-3 text-red-500">
-                        <LogOut className="w-5 h-5" />
+                      <LogOut className="w-5 h-5" />
                       </span>
-                      Sign Out
+                      Гарах
                     </button>
                   </div>
                 </nav>
@@ -331,7 +330,7 @@ export default function SettingsPage(): React.JSX.Element {
                 {/* Profile Settings */}
                 {activeTab === 'profile' && (
                   <div className="p-6">
-                    <h2 className="text-lg font-medium text-gray-900 mb-6">Profile Information</h2>
+                    <h2 className="text-lg font-medium text-gray-900 mb-6">Хувийн мэдээлэл</h2>
                     
                     <div className="mb-8 flex items-center">
                       <div className="mr-6">
@@ -350,8 +349,8 @@ export default function SettingsPage(): React.JSX.Element {
                       </div>
                       <div>
                         <h3 className="text-xl font-medium text-gray-900">{userProfile.firstName} {userProfile.lastName}</h3>
-                        <p className="text-sm text-gray-500 mt-1">{userProfile.jobTitle} at {userProfile.company}</p>
-                        <p className="text-sm text-gray-500 mt-1">Member since March 2023</p>
+                        <p className="text-sm text-gray-500 mt-1">{userProfile.company}-д {userProfile.jobTitle}</p>
+                        <p className="text-sm text-gray-500 mt-1">2023 оны 3-р сараас хойш гишүүн</p>
                       </div>
                     </div>
                     
@@ -359,19 +358,19 @@ export default function SettingsPage(): React.JSX.Element {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                           <label htmlFor="first-name" className="block text-sm font-medium text-gray-700 mb-1">
-                            First Name
+                          Нэр
                           </label>
                           <input
-                            type="text"
-                            id="first-name"
-                            className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                            value={userProfile.firstName}
-                            onChange={(e) => setUserProfile({...userProfile, firstName: e.target.value})}
+                          type="text"
+                          id="first-name"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                          value={userProfile.firstName}
+                          onChange={(e) => setUserProfile({...userProfile, firstName: e.target.value})}
                           />
                         </div>
                         <div>
                           <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 mb-1">
-                            Last Name
+                          Овог
                           </label>
                           <input
                             type="text"
@@ -383,9 +382,9 @@ export default function SettingsPage(): React.JSX.Element {
                         </div>
                       </div>
                       
-                      <div>
+                        <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                          Email Address
+                          И-мэйл хаяг
                         </label>
                         <input
                           type="email"
@@ -394,11 +393,11 @@ export default function SettingsPage(): React.JSX.Element {
                           value={userProfile.email}
                           onChange={(e) => setUserProfile({...userProfile, email: e.target.value})}
                         />
-                      </div>
-                      
-                      <div>
+                        </div>
+                        
+                        <div>
                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                          Phone Number
+                          Утасны дугаар
                         </label>
                         <input
                           type="tel"
@@ -412,19 +411,19 @@ export default function SettingsPage(): React.JSX.Element {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                           <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-                            Company
+                          Компани
                           </label>
                           <input
-                            type="text"
-                            id="company"
-                            className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                            value={userProfile.company}
-                            onChange={(e) => setUserProfile({...userProfile, company: e.target.value})}
+                          type="text"
+                          id="company"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                          value={userProfile.company}
+                          onChange={(e) => setUserProfile({...userProfile, company: e.target.value})}
                           />
                         </div>
                         <div>
                           <label htmlFor="job-title" className="block text-sm font-medium text-gray-700 mb-1">
-                            Job Title
+                          Ажлын албан тушаал
                           </label>
                           <input
                             type="text"
@@ -439,75 +438,75 @@ export default function SettingsPage(): React.JSX.Element {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
                           <label htmlFor="timezone" className="block text-sm font-medium text-gray-700 mb-1">
-                            Time Zone
+                          Цагийн бүс
                           </label>
                           <select
-                            id="timezone"
-                            className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                            value={userProfile.timeZone}
-                            onChange={(e) => setUserProfile({...userProfile, timeZone: e.target.value})}
+                          id="timezone"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                          value={userProfile.timeZone}
+                          onChange={(e) => setUserProfile({...userProfile, timeZone: e.target.value})}
                           >
-                            <option value="America/New_York">Eastern Time (ET)</option>
-                            <option value="America/Chicago">Central Time (CT)</option>
-                            <option value="America/Denver">Mountain Time (MT)</option>
-                            <option value="America/Los_Angeles">Pacific Time (PT)</option>
-                            <option value="Europe/London">Greenwich Mean Time (GMT)</option>
-                            <option value="Europe/Paris">Central European Time (CET)</option>
+                          <option value="America/New_York">Зүүн цагийн бүс (ET)</option>
+                          <option value="America/Chicago">Төв цагийн бүс (CT)</option>
+                          <option value="America/Denver">Уулын цагийн бүс (MT)</option>
+                          <option value="America/Los_Angeles">Номхон далайн цагийн бүс (PT)</option>
+                          <option value="Europe/London">Гринвичийн дундаж цаг (GMT)</option>
+                          <option value="Europe/Paris">Төв Европын цаг (CET)</option>
                           </select>
                         </div>
                         <div>
                           <label htmlFor="language" className="block text-sm font-medium text-gray-700 mb-1">
-                            Language
+                          Хэл
                           </label>
-                          <select
+                            <select
                             id="language"
                             className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
                             value={userProfile.language}
                             onChange={(e) => setUserProfile({...userProfile, language: e.target.value})}
-                          >
-                            <option value="English">English</option>
-                            <option value="Spanish">Spanish</option>
-                            <option value="French">French</option>
-                            <option value="German">German</option>
-                            <option value="Chinese">Chinese</option>
-                            <option value="Japanese">Japanese</option>
-                          </select>
-                        </div>
-                        <div>
-                          <label htmlFor="currency" className="block text-sm font-medium text-gray-700 mb-1">
-                            Currency
-                          </label>
-                          <select
+                            >
+                            <option value="English">Англи</option>
+                            <option value="Spanish">Испани</option>
+                            <option value="French">Франц</option>
+                            <option value="German">Герман</option>
+                            <option value="Chinese">Хятад</option>
+                            <option value="Japanese">Япон</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label htmlFor="currency" className="block text-sm font-medium text-gray-700 mb-1">
+                            Валют
+                            </label>
+                            <select
                             id="currency"
                             className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
                             value={userProfile.currency}
                             onChange={(e) => setUserProfile({...userProfile, currency: e.target.value})}
-                          >
-                            <option value="USD">US Dollar ($)</option>
-                            <option value="EUR">Euro (€)</option>
-                            <option value="GBP">British Pound (£)</option>
-                            <option value="JPY">Japanese Yen (¥)</option>
-                            <option value="CAD">Canadian Dollar (C$)</option>
-                            <option value="AUD">Australian Dollar (A$)</option>
-                          </select>
+                            >
+                            <option value="USD">Америк доллар ($)</option>
+                            <option value="EUR">Евро (€)</option>
+                            <option value="GBP">Британийн фунт (£)</option>
+                            <option value="JPY">Японы иен (¥)</option>
+                            <option value="CAD">Канад доллар (C$)</option>
+                            <option value="AUD">Австрали доллар (A$)</option>
+                            </select>
                         </div>
                       </div>
                       
                       <div className="pt-5">
                         <div className="flex justify-end">
-                          <button
+                            <button
                             type="button"
                             className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                          >
-                            Cancel
-                          </button>
-                          <button
+                            >
+                            Цуцлах
+                            </button>
+                            <button
                             type="button"
                             className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                             onClick={handleProfileUpdate}
-                          >
-                            Save Changes
-                          </button>
+                            >
+                            Өөрчлөлтийг хадгалах
+                            </button>
                         </div>
                       </div>
                     </div>
@@ -517,24 +516,24 @@ export default function SettingsPage(): React.JSX.Element {
                 {/* Security Settings */}
                 {activeTab === 'security' && (
                   <div className="p-6 space-y-8">
-                    <h2 className="text-lg font-medium text-gray-900">Security Settings</h2>
+                    <h2 className="text-lg font-medium text-gray-900">Аюулгүй байдлын тохиргоо</h2>
                     
-                    {/* Password Change */}
+                    {/* Нууц үг солих */}
                     <div className="bg-gray-50 rounded-lg p-6">
-                      <h3 className="text-md font-medium text-gray-900 mb-4">Change Password</h3>
+                      <h3 className="text-md font-medium text-gray-900 mb-4">Нууц үг солих</h3>
                       <div className="space-y-4">
-                        <div>
-                          <label htmlFor="current-password" className="block text-sm font-medium text-gray-700 mb-1">
-                            Current Password
-                          </label>
-                          <div className="relative rounded-md shadow-sm">
-                            <input
-                              type={showCurrentPassword ? "text" : "password"}
-                              id="current-password"
-                              className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md pr-10"
-                              value={passwordForm.currentPassword}
-                              onChange={(e) => setPasswordForm({...passwordForm, currentPassword: e.target.value})}
-                            />
+                      <div>
+                        <label htmlFor="current-password" className="block text-sm font-medium text-gray-700 mb-1">
+                        Одоогийн нууц үг
+                        </label>
+                        <div className="relative rounded-md shadow-sm">
+                        <input
+                          type={showCurrentPassword ? "text" : "password"}
+                          id="current-password"
+                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md pr-10"
+                          value={passwordForm.currentPassword}
+                          onChange={(e) => setPasswordForm({...passwordForm, currentPassword: e.target.value})}
+                        />
                             <button
                               type="button"
                               className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
@@ -547,29 +546,29 @@ export default function SettingsPage(): React.JSX.Element {
                         
                         <div>
                           <label htmlFor="new-password" className="block text-sm font-medium text-gray-700 mb-1">
-                            New Password
+                          Шинэ нууц үг
                           </label>
                           <div className="relative rounded-md shadow-sm">
-                            <input
-                              type={showPassword ? "text" : "password"}
-                              id="new-password"
-                              className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md pr-10"
-                              value={passwordForm.newPassword}
-                              onChange={(e) => setPasswordForm({...passwordForm, newPassword: e.target.value})}
-                            />
-                            <button
-                              type="button"
-                              className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
-                              onClick={() => setShowPassword(!showPassword)}
-                            >
-                              {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                            </button>
+                          <input
+                            type={showPassword ? "text" : "password"}
+                            id="new-password"
+                            className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md pr-10"
+                            value={passwordForm.newPassword}
+                            onChange={(e) => setPasswordForm({...passwordForm, newPassword: e.target.value})}
+                          />
+                          <button
+                            type="button"
+                            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                          </button>
                           </div>
                         </div>
                         
                         <div>
                           <label htmlFor="confirm-password" className="block text-sm font-medium text-gray-700 mb-1">
-                            Confirm New Password
+                          Шинэ нууц үгийг баталгаажуулах
                           </label>
                           <input
                             type={showPassword ? "text" : "password"}
@@ -582,22 +581,22 @@ export default function SettingsPage(): React.JSX.Element {
                         
                         <div className="flex justify-end">
                           <button
-                            type="button"
-                            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                            onClick={handlePasswordChange}
+                          type="button"
+                          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                          onClick={handlePasswordChange}
                           >
-                            Change Password
+                          Нууц үгийг солих
                           </button>
                         </div>
+                        </div>
                       </div>
-                    </div>
-                    
-                    {/* Two-Factor Authentication */}
-                    <div className="bg-gray-50 rounded-lg p-6">
-                      <div className="flex items-center justify-between">
+                      
+                      {/* Хоёр шатлалт баталгаажуулалт */}
+                      <div className="bg-gray-50 rounded-lg p-6">
+                        <div className="flex items-center justify-between">
                         <div>
-                          <h3 className="text-md font-medium text-gray-900">Two-Factor Authentication</h3>
-                          <p className="text-sm text-gray-500 mt-1">Add an extra layer of security to your account</p>
+                          <h3 className="text-md font-medium text-gray-900">Хоёр шатлалт баталгаажуулалт</h3>
+                          <p className="text-sm text-gray-500 mt-1">Өөрийн бүртгэлд нэмэлт хамгаалалт нэмээрэй</p>
                         </div>
                         <button
                           type="button"
@@ -640,21 +639,21 @@ export default function SettingsPage(): React.JSX.Element {
                             </div>
                             <div className="ml-3">
                               <p className="text-sm font-medium text-blue-800">
-                                Two-factor authentication is enabled
+                              Хоёр шатлалт баталгаажуулалт идэвхжсэн байна
                               </p>
                               <p className="mt-1 text-sm text-blue-700">
-                                Your account is protected with an additional security layer. You&apos;ll need to enter a verification code from your mobile app when you sign in.
+                              Таны бүртгэл нэмэлт хамгаалалтын давхаргатай. Нэвтрэх үедээ гар утасны апп-аас баталгаажуулах код оруулах шаардлагатай болно.
                               </p>
                             </div>
+                            </div>
                           </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                    
-                    {/* Active Sessions */}
-                    <div className="bg-gray-50 rounded-lg p-6">
-                      <h3 className="text-md font-medium text-gray-900 mb-4">Active Sessions</h3>
-                      <div className="space-y-4">
+                        
+                        {/* Идэвхтэй сессүүд */}
+                        <div className="bg-gray-50 rounded-lg p-6">
+                          <h3 className="text-md font-medium text-gray-900 mb-4">Идэвхтэй сессүүд</h3>
+                          <div className="space-y-4">
                         {activeSessions.map(session => (
                           <div key={session.id} className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
                             <div className="flex items-center">
@@ -671,45 +670,45 @@ export default function SettingsPage(): React.JSX.Element {
                                   <span>{session.location}</span>
                                   <span className="mx-1">•</span>
                                   <span>{formatDate(session.lastActive)}</span>
-                                  {session.current && (
+                                    {session.current && (
                                     <>
                                       <span className="mx-1">•</span>
-                                      <span className="text-green-600 font-medium">Current session</span>
+                                      <span className="text-green-600 font-medium">Одоогийн сесс</span>
                                     </>
-                                  )}
+                                    )}
+                                  </div>
+                                  </div>
                                 </div>
-                              </div>
-                            </div>
-                            {!session.current && (
-                              <button
-                                type="button"
-                                className="text-sm text-red-600 hover:text-red-800"
-                              >
-                                Terminate
-                              </button>
+                                {!session.current && (
+                                  <button
+                                  type="button"
+                                  className="text-sm text-red-600 hover:text-red-800"
+                                  >
+                                  Сессийг хаах
+                                  </button>
                             )}
                           </div>
                         ))}
                       </div>
                       
-                      <div className="mt-4 flex justify-end">
+                        <div className="mt-4 flex justify-end">
                         <button
                           type="button"
                           className="inline-flex items-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         >
                           <LogOut className="w-4 h-4 mr-2" />
-                          Sign Out All Other Sessions
+                          Бусад бүх сессийг хаах
                         </button>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                )}
-                
-                {/* Integration Settings */}
-                {activeTab === 'integrations' && (
-                  <div className="p-6 space-y-6">
-                    <h2 className="text-lg font-medium text-gray-900">Integrations</h2>
-                    <p className="text-sm text-gray-500">Connect your finance accounts and services for automatic data import</p>
+                      </div>
+                    )}
+                    
+                    {/* Integration Settings */}
+                    {activeTab === 'integrations' && (
+                      <div className="p-6 space-y-6">
+                      <h2 className="text-lg font-medium text-gray-900">Интеграцууд</h2>
+                      <p className="text-sm text-gray-500">Санхүүгийн данс, үйлчилгээгээ холбож өгөгдлийг автоматаар импортлоорой</p>
                     
                     <div className="mt-6 space-y-4">
                       {integrations.map(integration => (
@@ -757,13 +756,13 @@ export default function SettingsPage(): React.JSX.Element {
                               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
                                 <div className="flex items-center mb-2 sm:mb-0">
                                   <Check className="w-5 h-5 text-green-500 mr-2" />
-                                  <span className="text-sm text-gray-600">Connected and syncing data automatically</span>
+                                  <span className="text-sm text-gray-600">Холбогдсон бөгөөд өгөгдлийг автоматаар синк хийж байна</span>
                                 </div>
                                 <a
                                   href="#"
                                   className="text-sm text-blue-600 hover:text-blue-800 inline-flex items-center"
                                 >
-                                  Configure settings
+                                  Тохиргоог өөрчлөх
                                   <ChevronRight className="w-4 h-4 ml-1" />
                                 </a>
                               </div>
@@ -774,36 +773,36 @@ export default function SettingsPage(): React.JSX.Element {
                     </div>
                     
                     <div className="mt-8">
-                      <h3 className="text-md font-medium text-gray-900 mb-4">Export Options</h3>
-                      <div className="flex flex-wrap gap-4">
+                        <h3 className="text-md font-medium text-gray-900 mb-4">Экспортлох сонголтууд</h3>
+                        <div className="flex flex-wrap gap-4">
                         <button
                           type="button"
                           className="inline-flex items-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         >
-                          Export to CSV
+                          CSV рүү экспортлох
                         </button>
                         <button
                           type="button"
                           className="inline-flex items-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         >
-                          Export to Excel
+                          Excel рүү экспортлох
                         </button>
                         <button
                           type="button"
                           className="inline-flex items-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         >
-                          Export to PDF
+                          PDF рүү экспортлох
                         </button>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                )}
-                
-                {/* Notification Settings */}
-                {activeTab === 'notifications' && (
-                  <div className="p-6 space-y-6">
-                    <h2 className="text-lg font-medium text-gray-900">Notification Preferences</h2>
-                    <p className="text-sm text-gray-500">Configure how and when you receive notifications</p>
+                      </div>
+                    )}
+                    
+                    {/* Notification Settings */}
+                    {activeTab === 'notifications' && (
+                      <div className="p-6 space-y-6">
+                      <h2 className="text-lg font-medium text-gray-900">Мэдэгдлийн тохиргоо</h2>
+                      <p className="text-sm text-gray-500">Мэдэгдлийг хэрхэн, хэзээ хүлээн авахыг тохируулна уу</p>
                     
                     <div className="mt-6">
                       <table className="min-w-full divide-y divide-gray-200">
@@ -882,61 +881,61 @@ export default function SettingsPage(): React.JSX.Element {
                     </div>
                     
                     <div className="mt-8 bg-gray-50 p-6 rounded-lg">
-                      <h3 className="text-md font-medium text-gray-900 mb-4">Alert Thresholds</h3>
-                      <div className="space-y-4">
+                        <h3 className="text-md font-medium text-gray-900 mb-4">Сэрэмжлүүлгийн босго</h3>
+                        <div className="space-y-4">
                         <div>
                           <label htmlFor="budget-alert" className="block text-sm font-medium text-gray-700 mb-1">
-                            Budget Alert Threshold (%)
+                          Төсвийн сэрэмжлүүлгийн босго (%)
                           </label>
                           <div className="flex items-center">
-                            <input
-                              type="range"
-                              id="budget-alert"
-                              min="50"
-                              max="100"
-                              step="5"
-                              defaultValue="80"
-                              className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                            />
-                            <span className="ml-3 text-sm font-medium text-gray-700">80%</span>
+                          <input
+                            type="range"
+                            id="budget-alert"
+                            min="50"
+                            max="100"
+                            step="5"
+                            defaultValue="80"
+                            className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                          />
+                          <span className="ml-3 text-sm font-medium text-gray-700">80%</span>
                           </div>
-                          <p className="mt-1 text-sm text-gray-500">Get notified when your spending reaches this percentage of the budget</p>
+                          <p className="mt-1 text-sm text-gray-500">Таны зарцуулалт төсвийн энэ хувьд хүрэх үед мэдэгдэл авна</p>
                         </div>
                         
                         <div className="flex items-center justify-between mt-4">
                           <div>
-                            <h4 className="text-sm font-medium text-gray-700">Low Balance Alerts</h4>
-                            <p className="text-sm text-gray-500">Get notified when account balance falls below threshold</p>
+                          <h4 className="text-sm font-medium text-gray-700">Бага үлдэгдлийн мэдэгдэл</h4>
+                          <p className="text-sm text-gray-500">Дансны үлдэгдэл босго хэмжээнээс доош унах үед мэдэгдэл авна</p>
                           </div>
                           <div className="flex items-center">
-                            <span className="mr-2 text-sm text-gray-700">$500</span>
-                            <button
-                              type="button"
-                              className="bg-blue-600 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                            >
-                              <span className="sr-only">Enable notifications</span>
-                              <span
-                                className="translate-x-5 pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
-                              ></span>
-                            </button>
+                          <span className="mr-2 text-sm text-gray-700">$500</span>
+                          <button
+                            type="button"
+                            className="bg-blue-600 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                          >
+                            <span className="sr-only">Мэдэгдлийг идэвхжүүлэх</span>
+                            <span
+                            className="translate-x-5 pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+                            ></span>
+                          </button>
                           </div>
                         </div>
+                        </div>
                       </div>
-                    </div>
-                    
-                    <div className="flex justify-end pt-5">
-                      <button
+                      
+                      <div className="flex justify-end pt-5">
+                        <button
                         type="button"
                         className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                      >
-                        Cancel
-                      </button>
-                      <button
+                        >
+                        Цуцлах
+                        </button>
+                        <button
                         type="button"
                         className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                      >
-                        Save Preferences
-                      </button>
+                        >
+                        Тохиргоог хадгалах
+                        </button>
                     </div>
                   </div>
                 )}

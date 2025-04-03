@@ -44,12 +44,12 @@ export default function Dashboard(): React.JSX.Element {
 
   // Sample data for recent transactions
   const recentTransactions: Transaction[] = [
-    { id: 1, date: '2025-03-28', description: 'Client Payment - XYZ Corp', amount: 3500, category: 'Income', type: 'income' },
-    { id: 2, date: '2025-03-27', description: 'Office Supplies', amount: -250, category: 'Office', type: 'expense' },
-    { id: 3, date: '2025-03-25', description: 'Software Subscription', amount: -89, category: 'Software', type: 'expense' },
-    { id: 4, date: '2025-03-22', description: 'Client Payment - ABC Inc', amount: 2800, category: 'Income', type: 'income' },
-    { id: 5, date: '2025-03-20', description: 'Utilities', amount: -175, category: 'Utilities', type: 'expense' },
-  ];
+    { id: 1, date: '2025-03-28', description: 'Харилцагчийн төлбөр - XYZ Корпораци', amount: 3500, category: 'Орлого', type: 'income' },
+    { id: 2, date: '2025-03-27', description: 'Оффисын хэрэгсэл', amount: -250, category: 'Оффис', type: 'expense' },
+    { id: 3, date: '2025-03-25', description: 'Программ хангамжийн захиалга', amount: -89, category: 'Программ хангамж', type: 'expense' },
+    { id: 4, date: '2025-03-22', description: 'Харилцагчийн төлбөр - ABC ХХК', amount: 2800, category: 'Орлого', type: 'income' },
+    { id: 5, date: '2025-03-20', description: 'Ашиглалтын зардал', amount: -175, category: 'Ашиглалтын зардал', type: 'expense' },
+];
 
   return (
     <div className="flex h-screen bg-gray-50">
@@ -81,14 +81,15 @@ export default function Dashboard(): React.JSX.Element {
         </div>
         
         <nav className="mt-6 px-4">
-          <div className="space-y-4">
-            <NavItem icon={<Home className="w-5 h-5" />} text="Dashboard" active={true} whichPage='dashboard'/>
-            <NavItem icon={<CreditCard className="w-5 h-5" />} text="Expenses" active={false} whichPage='expenses'/>
-            <NavItem icon={<DollarSign className="w-5 h-5" />} text="Revenue" active={false} whichPage='revenue'/>
-            <NavItem icon={<PieChart className="w-5 h-5" />} text="Budget" active={false} whichPage='budget'/>
-            <NavItem icon={<FileText className="w-5 h-5" />} text="Reports" active={false} whichPage='reports'/>
-            <NavItem icon={<Settings className="w-5 h-5" />} text="Settings" active={false} whichPage='settings'/>
-          </div>
+        <div className="space-y-4">
+          <NavItem icon={<Home className="w-5 h-5" />} text="Хяналтын самбар" active={true} whichPage='dashboard'/>
+          <NavItem icon={<CreditCard className="w-5 h-5" />} text="Зарлагууд" active={false} whichPage='expenses'/>
+          <NavItem icon={<DollarSign className="w-5 h-5" />} text="Орлого" active={false} whichPage='revenue'/>
+          <NavItem icon={<PieChart className="w-5 h-5" />} text="Төсөв" active={false} whichPage='budget'/>
+          <NavItem icon={<FileText className="w-5 h-5" />} text="Тайлан" active={false} whichPage='reports'/>
+          <NavItem icon={<Settings className="w-5 h-5" />} text="Тохиргоо" active={false} whichPage='settings'/>
+        </div>
+
         </nav>
       </aside>
 
@@ -124,7 +125,7 @@ export default function Dashboard(): React.JSX.Element {
 
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
-          <h1 className="text-2xl font-semibold text-gray-800 mb-6">Dashboard</h1>
+          <h1 className="text-2xl font-semibold text-gray-800 mb-6">Хяналтын самбар</h1>
           
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -157,7 +158,7 @@ export default function Dashboard(): React.JSX.Element {
           {/* Chart Section */}
           <div className="bg-white rounded-lg shadow p-6 mb-8">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-gray-800">Financial Overview</h2>
+            <h2 className="text-lg font-semibold text-gray-800">Санхүүгийн тойм</h2>
               <select className="text-sm border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
                 <option>Last 6 months</option>
                 <option>Last 12 months</option>
@@ -193,18 +194,18 @@ export default function Dashboard(): React.JSX.Element {
           {/* Recent Transactions */}
           <div className="bg-white rounded-lg shadow overflow-hidden">
             <div className="flex items-center justify-between p-6 border-b">
-              <h2 className="text-lg font-semibold text-gray-800">Recent Transactions</h2>
-              <button className="text-sm text-blue-600 hover:text-blue-800">View all</button>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                  </tr>
+            <h2 className="text-lg font-semibold text-gray-800">Сүүлийн гүйлгээ</h2>
+              <button className="text-sm text-blue-600 hover:text-blue-800">Бүгдийг харах</button>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Огноо</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Тайлбар</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ангилал</th>
+                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Дүн</th>
+                    </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {recentTransactions.map((transaction) => (
@@ -294,8 +295,8 @@ function StatCard({ title, amount, change, isPositive, icon, color }: StatCardPr
         <span className={`text-sm font-medium ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
           {change}
         </span>
-        <span className="text-sm text-gray-500 ml-2">from last month</span>
-      </div>
+        <span className="text-sm text-gray-500 ml-2">өнгөрсөн сараас</span>
+        </div>
     </div>
   );
 }

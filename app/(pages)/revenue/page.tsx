@@ -86,37 +86,37 @@ export default function RevenuePage(): React.JSX.Element {
   
   // Sample data
   const categories: Category[] = [
-    { id: 1, name: 'Services', color: 'green' },
-    { id: 2, name: 'Products', color: 'blue' },
-    { id: 3, name: 'Subscriptions', color: 'purple' },
-    { id: 4, name: 'Consulting', color: 'orange' },
-    { id: 5, name: 'Licensing', color: 'indigo' },
-    { id: 6, name: 'Affiliate', color: 'pink' },
-    { id: 7, name: 'Royalties', color: 'yellow' },
-    { id: 8, name: 'Other', color: 'gray' },
+    { id: 1, name: 'Үйлчилгээ', color: 'green' },
+    { id: 2, name: 'Бүтээгдэхүүн', color: 'blue' },
+    { id: 3, name: 'Захиалга', color: 'purple' },
+    { id: 4, name: 'Зөвлөгөө', color: 'orange' },
+    { id: 5, name: 'Лиценз', color: 'indigo' },
+    { id: 6, name: 'Холбоотой', color: 'pink' },
+    { id: 7, name: 'Эрх', color: 'yellow' },
+    { id: 8, name: 'Бусад', color: 'gray' },
   ];
   
   const clients: Client[] = [
-    { id: 1, name: 'Acme Corporation', company: 'Acme Corp', email: 'billing@acmecorp.com' },
-    { id: 2, name: 'Globex Industries', company: 'Globex', email: 'finance@globex.com' },
-    { id: 3, name: 'Wayne Enterprises', company: 'Wayne Ent', email: 'accounts@wayne.com' },
-    { id: 4, name: 'Stark Industries', company: 'Stark Inc', email: 'payments@stark.com' },
-    { id: 5, name: 'Individual Clients', company: 'Various', email: '' },
+    { id: 1, name: 'Акме Корпораци', company: 'Акме Корп', email: 'billing@acmecorp.com' },
+    { id: 2, name: 'Глобекс Индастриз', company: 'Глобекс', email: 'finance@globex.com' },
+    { id: 3, name: 'Вэйн Энтерпрайз', company: 'Вэйн Энт', email: 'accounts@wayne.com' },
+    { id: 4, name: 'Старк Индастриз', company: 'Старк Инк', email: 'payments@stark.com' },
+    { id: 5, name: 'Хувь хүмүүс', company: 'Олон төрөл', email: '' },
   ];
   
   const revenues: Revenue[] = [
-    { id: 1, date: '2025-03-30', description: 'Website Development Project', amount: 5000.00, category: 'Services', client: 'Acme Corporation', paymentMethod: 'Bank Transfer', status: 'completed', invoice: 'INV-2025-001' },
-    { id: 2, date: '2025-03-28', description: 'Monthly SaaS Subscription - March', amount: 2500.00, category: 'Subscriptions', client: 'Globex Industries', paymentMethod: 'Credit Card', status: 'completed', invoice: 'INV-2025-002' },
-    { id: 3, date: '2025-03-25', description: 'Mobile App Development - Milestone 1', amount: 7500.00, category: 'Services', client: 'Wayne Enterprises', paymentMethod: 'Bank Transfer', status: 'completed', invoice: 'INV-2025-003' },
-    { id: 4, date: '2025-03-22', description: 'Software Licensing Fees', amount: 1200.00, category: 'Licensing', client: 'Stark Industries', paymentMethod: 'Credit Card', status: 'completed', invoice: 'INV-2025-004' },
-    { id: 5, date: '2025-03-20', description: 'Consulting Services - Training', amount: 1800.00, category: 'Consulting', client: 'Globex Industries', paymentMethod: 'Bank Transfer', status: 'completed', invoice: 'INV-2025-005' },
-    { id: 6, date: '2025-03-18', description: 'E-commerce Platform - Phase 2', amount: 6000.00, category: 'Services', client: 'Acme Corporation', paymentMethod: 'Bank Transfer', status: 'pending', invoice: 'INV-2025-006' },
-    { id: 7, date: '2025-03-15', description: 'Product Sales - Premium Package', amount: 3500.00, category: 'Products', client: 'Individual Clients', paymentMethod: 'PayPal', status: 'completed', invoice: 'INV-2025-007' },
-    { id: 8, date: '2025-03-12', description: 'Affiliate Marketing Commission', amount: 750.00, category: 'Affiliate', client: 'Individual Clients', paymentMethod: 'PayPal', status: 'completed', invoice: 'INV-2025-008' },
-    { id: 9, date: '2025-03-10', description: 'Annual Maintenance Contract', amount: 4200.00, category: 'Services', client: 'Wayne Enterprises', paymentMethod: 'Bank Transfer', status: 'pending', invoice: 'INV-2025-009' },
-    { id: 10, date: '2025-03-05', description: 'UI/UX Design Services', amount: 2800.00, category: 'Services', client: 'Stark Industries', paymentMethod: 'Credit Card', status: 'completed', invoice: 'INV-2025-010' },
-    { id: 11, date: '2025-03-03', description: 'API Integration Project', amount: 3200.00, category: 'Services', client: 'Globex Industries', paymentMethod: 'Bank Transfer', status: 'completed', invoice: 'INV-2025-011' },
-    { id: 12, date: '2025-03-01', description: 'Online Workshop Tickets', amount: 980.00, category: 'Products', client: 'Individual Clients', paymentMethod: 'PayPal', status: 'cancelled', invoice: 'INV-2025-012' },
+    { id: 1, date: '2025-03-30', description: 'Вэбсайт хөгжүүлэх төсөл', amount: 5000.00, category: 'Үйлчилгээ', client: 'Акме Корпораци', paymentMethod: 'Банкны шилжүүлэг', status: 'completed', invoice: 'НДБ-2025-001' },
+    { id: 2, date: '2025-03-28', description: 'Сарын SaaS захиалга - 3-р сар', amount: 2500.00, category: 'Захиалга', client: 'Глобекс Индастриз', paymentMethod: 'Кредит карт', status: 'completed', invoice: 'НДБ-2025-002' },
+    { id: 3, date: '2025-03-25', description: 'Мобайл апп хөгжүүлэлт - Алхам 1', amount: 7500.00, category: 'Үйлчилгээ', client: 'Вэйн Энтерпрайз', paymentMethod: 'Банкны шилжүүлэг', status: 'completed', invoice: 'НДБ-2025-003' },
+    { id: 4, date: '2025-03-22', description: 'Программ хангамжийн лицензийн төлбөр', amount: 1200.00, category: 'Лиценз', client: 'Старк Индастриз', paymentMethod: 'Кредит карт', status: 'completed', invoice: 'НДБ-2025-004' },
+    { id: 5, date: '2025-03-20', description: 'Зөвлөх үйлчилгээ - Сургалт', amount: 1800.00, category: 'Зөвлөгөө', client: 'Глобекс Индастриз', paymentMethod: 'Банкны шилжүүлэг', status: 'completed', invoice: 'НДБ-2025-005' },
+    { id: 6, date: '2025-03-18', description: 'Онлайн худалдааны платформ - Үе 2', amount: 6000.00, category: 'Үйлчилгээ', client: 'Акме Корпораци', paymentMethod: 'Банкны шилжүүлэг', status: 'pending', invoice: 'НДБ-2025-006' },
+    { id: 7, date: '2025-03-15', description: 'Бүтээгдэхүүний борлуулалт - Премиум багц', amount: 3500.00, category: 'Бүтээгдэхүүн', client: 'Хувь хүмүүс', paymentMethod: 'PayPal', status: 'completed', invoice: 'НДБ-2025-007' },
+    { id: 8, date: '2025-03-12', description: 'Холбоотой маркетингийн шимтгэл', amount: 750.00, category: 'Холбоотой', client: 'Хувь хүмүүс', paymentMethod: 'PayPal', status: 'completed', invoice: 'НДБ-2025-008' },
+    { id: 9, date: '2025-03-10', description: 'Жилийн засвар үйлчилгээний гэрээ', amount: 4200.00, category: 'Үйлчилгээ', client: 'Вэйн Энтерпрайз', paymentMethod: 'Банкны шилжүүлэг', status: 'pending', invoice: 'НДБ-2025-009' },
+    { id: 10, date: '2025-03-05', description: 'UI/UX Дизайны үйлчилгээ', amount: 2800.00, category: 'Үйлчилгээ', client: 'Старк Индастриз', paymentMethod: 'Кредит карт', status: 'completed', invoice: 'НДБ-2025-010' },
+    { id: 11, date: '2025-03-03', description: 'API интеграцийн төсөл', amount: 3200.00, category: 'Үйлчилгээ', client: 'Глобекс Индастриз', paymentMethod: 'Банкны шилжүүлэг', status: 'completed', invoice: 'НДБ-2025-011' },
+    { id: 12, date: '2025-03-01', description: 'Онлайн семинарын тасалбар', amount: 980.00, category: 'Бүтээгдэхүүн', client: 'Хувь хүмүүс', paymentMethod: 'PayPal', status: 'cancelled', invoice: 'НДБ-2025-012' },
   ];
   
   // Constants
@@ -320,7 +320,7 @@ export default function RevenuePage(): React.JSX.Element {
         <div className="flex items-center justify-between h-16 px-6 border-b">
           <div className="flex items-center">
             <DollarSign className="w-6 h-6 text-blue-600" />
-            <span className="ml-2 text-xl font-semibold text-gray-800">FinTrack</span>
+            <span className="ml-2 text-xl font-semibold text-gray-800">СанХүрээ</span>
           </div>
           <button 
             className="p-1 rounded-md lg:hidden" 
@@ -332,12 +332,12 @@ export default function RevenuePage(): React.JSX.Element {
         
         <nav className="mt-6 px-4">
           <div className="space-y-4">
-            <NavItem icon={<Home className="w-5 h-5" />} text="Dashboard" active={false} whichPage="dashboard" />
-            <NavItem icon={<CreditCard className="w-5 h-5" />} text="Expenses" active={false} whichPage="expenses" />
-            <NavItem icon={<DollarSign className="w-5 h-5" />} text="Revenue" active={true} whichPage="revenue" />
-            <NavItem icon={<PieChart className="w-5 h-5" />} text="Budget" active={false} whichPage="budget" />
-            <NavItem icon={<FileText className="w-5 h-5" />} text="Reports" active={false} whichPage="reports" />
-            <NavItem icon={<Settings className="w-5 h-5" />} text="Settings" active={false} whichPage="settings" />
+            <NavItem icon={<Home className="w-5 h-5" />} text="Үндсэн" active={false} whichPage="dashboard" />
+            <NavItem icon={<CreditCard className="w-5 h-5" />} text="Зардал" active={false} whichPage="expenses" />
+            <NavItem icon={<DollarSign className="w-5 h-5" />} text="Орлого" active={true} whichPage="revenue" />
+            <NavItem icon={<PieChart className="w-5 h-5" />} text="Төсөв" active={false} whichPage="budget" />
+            <NavItem icon={<FileText className="w-5 h-5" />} text="Тайлан" active={false} whichPage="reports" />
+            <NavItem icon={<Settings className="w-5 h-5" />} text="Тохиргоо" active={false} whichPage="settings" />
           </div>
         </nav>
       </aside>
@@ -363,9 +363,9 @@ export default function RevenuePage(): React.JSX.Element {
                   <img 
                     className="h-8 w-8 rounded-full object-cover"
                     src="/api/placeholder/32/32" 
-                    alt="User profile" 
+                    alt="Хэрэглэгчийн профайл" 
                   />
-                  <span className="ml-2 text-gray-700 font-medium hidden md:block">John Doe</span>
+                  <span className="ml-2 text-gray-700 font-medium hidden md:block">Бат Болд</span>
                 </button>
               </div>
             </div>
@@ -375,8 +375,8 @@ export default function RevenuePage(): React.JSX.Element {
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
           <div className="mb-6">
-            <h1 className="text-2xl font-semibold text-gray-800">Revenue</h1>
-            <p className="text-gray-600 mt-1">Track and manage your income sources</p>
+            <h1 className="text-2xl font-semibold text-gray-800">Орлого</h1>
+            <p className="text-gray-600 mt-1">Орлогын эх үүсвэрүүдийг хянах, удирдах</p>
           </div>
           
           {/* Stats cards */}
@@ -384,7 +384,7 @@ export default function RevenuePage(): React.JSX.Element {
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Total Revenue</p>
+                  <p className="text-sm font-medium text-gray-500">Нийт орлого</p>
                   <p className="text-2xl font-semibold text-gray-800 mt-1">${totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                 </div>
                 <div className="p-3 rounded-full bg-green-100">
@@ -395,14 +395,14 @@ export default function RevenuePage(): React.JSX.Element {
                 <span className={`text-sm font-medium ${percentChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                   {percentChange >= 0 ? '+' : ''}{percentChange.toFixed(1)}%
                 </span>
-                <span className="text-sm text-gray-500 ml-2">from last month</span>
+                <span className="text-sm text-gray-500 ml-2">өмнөх сараас</span>
               </div>
             </div>
             
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Pending Revenue</p>
+                  <p className="text-sm font-medium text-gray-500">Хүлээгдэж буй орлого</p>
                   <p className="text-2xl font-semibold text-gray-800 mt-1">${totalPendingAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                 </div>
                 <div className="p-3 rounded-full bg-yellow-100">
@@ -410,14 +410,14 @@ export default function RevenuePage(): React.JSX.Element {
                 </div>
               </div>
               <div className="mt-4">
-                <span className="text-sm text-gray-500">{filteredRevenues.filter(r => r.status === 'pending').length} pending invoices</span>
+                <span className="text-sm text-gray-500">{filteredRevenues.filter(r => r.status === 'pending').length} хүлээгдэж буй нэхэмжлэх</span>
               </div>
             </div>
             
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Top Client</p>
+                  <p className="text-sm font-medium text-gray-500">Шилдэг харилцагч</p>
                   <p className="text-2xl font-semibold text-gray-800 mt-1">
                     {topClient}
                   </p>
@@ -442,7 +442,7 @@ export default function RevenuePage(): React.JSX.Element {
                 <input
                   type="text"
                   className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                  placeholder="Search revenues..."
+                  placeholder="Орлогуудыг хайх..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -454,7 +454,7 @@ export default function RevenuePage(): React.JSX.Element {
                   className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
                   <Filter className="h-4 w-4 mr-2" />
-                  Filters
+                  Шүүлтүүр
                   <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${isFiltersOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
@@ -463,7 +463,7 @@ export default function RevenuePage(): React.JSX.Element {
                   className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                 >
                   <Plus className="h-4 w-4 mr-2" />
-                  Add Revenue
+                  Орлого нэмэх
                 </button>
               </div>
             </div>
@@ -474,10 +474,10 @@ export default function RevenuePage(): React.JSX.Element {
                 <div className="pt-4 grid grid-cols-1 md:grid-cols-4 gap-6">
                   {/* Date Range Filter */}
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">Date Range</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">Огноо</h3>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="start-date" className="block text-sm text-gray-500 mb-1">Start Date</label>
+                        <label htmlFor="start-date" className="block text-sm text-gray-500 mb-1">Эхлэх огноо</label>
                         <input
                           type="date"
                           id="start-date"
@@ -487,7 +487,7 @@ export default function RevenuePage(): React.JSX.Element {
                         />
                       </div>
                       <div>
-                        <label htmlFor="end-date" className="block text-sm text-gray-500 mb-1">End Date</label>
+                        <label htmlFor="end-date" className="block text-sm text-gray-500 mb-1">Дуусах огноо</label>
                         <input
                           type="date"
                           id="end-date"
@@ -501,7 +501,7 @@ export default function RevenuePage(): React.JSX.Element {
                   
                   {/* Category Filter */}
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">Categories</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">Ангилал</h3>
                     <div className="space-y-2 max-h-40 overflow-y-auto pr-2">
                       {categories.map(category => (
                         <div key={category.id} className="flex items-center">
@@ -523,7 +523,7 @@ export default function RevenuePage(): React.JSX.Element {
                   
                   {/* Client Filter */}
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">Clients</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">Харилцагчид</h3>
                     <div className="space-y-2 max-h-40 overflow-y-auto pr-2">
                       {clients.map(client => (
                         <div key={client.id} className="flex items-center">
@@ -545,20 +545,24 @@ export default function RevenuePage(): React.JSX.Element {
                   
                   {/* Status Filter */}
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">Status</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">Төлөв</h3>
                     <div className="space-y-2">
-                      {['pending', 'completed', 'cancelled'].map(status => (
-                        <div key={status} className="flex items-center">
+                      {[
+                        { id: 'pending', name: 'Хүлээгдэж буй' },
+                        { id: 'completed', name: 'Дууссан' },
+                        { id: 'cancelled', name: 'Цуцлагдсан' }
+                      ].map(status => (
+                        <div key={status.id} className="flex items-center">
                           <input
-                            id={`status-${status}`}
+                            id={`status-${status.id}`}
                             type="checkbox"
                             className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                            checked={selectedStatus.includes(status)}
-                            onChange={() => handleStatusSelect(status)}
+                            checked={selectedStatus.includes(status.id)}
+                            onChange={() => handleStatusSelect(status.id)}
                           />
-                          <label htmlFor={`status-${status}`} className="ml-2 block text-sm text-gray-700 capitalize">
-                            {status} 
-                            <span className="ml-1 text-xs text-gray-500">({statusCount[status] || 0})</span>
+                          <label htmlFor={`status-${status.id}`} className="ml-2 block text-sm text-gray-700">
+                            {status.name} 
+                            <span className="ml-1 text-xs text-gray-500">({statusCount[status.id] || 0})</span>
                           </label>
                         </div>
                       ))}
@@ -572,13 +576,13 @@ export default function RevenuePage(): React.JSX.Element {
                     onClick={resetFilters}
                     className="mr-3 inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
-                    Reset Filters
+                    Шүүлтүүр цэвэрлэх
                   </button>
                   <button
                     onClick={() => setIsFiltersOpen(false)}
                     className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
-                    Apply Filters
+                    Шүүлтүүр хэрэглэх
                   </button>
                 </div>
               </div>
@@ -597,7 +601,7 @@ export default function RevenuePage(): React.JSX.Element {
                       onClick={() => handleSort('date')}
                     >
                       <div className="flex items-center">
-                        Date
+                        Огноо
                         {sortField === 'date' && (
                           sortDirection === 'asc' ? 
                             <ArrowUp className="ml-1 h-4 w-4" /> : 
@@ -611,7 +615,7 @@ export default function RevenuePage(): React.JSX.Element {
                       onClick={() => handleSort('description')}
                     >
                       <div className="flex items-center">
-                        Description
+                        Тайлбар
                         {sortField === 'description' && (
                           sortDirection === 'asc' ? 
                             <ArrowUp className="ml-1 h-4 w-4" /> : 
@@ -625,7 +629,7 @@ export default function RevenuePage(): React.JSX.Element {
                       onClick={() => handleSort('client')}
                     >
                       <div className="flex items-center">
-                        Client
+                        Харилцагч
                         {sortField === 'client' && (
                           sortDirection === 'asc' ? 
                             <ArrowUp className="ml-1 h-4 w-4" /> : 
@@ -639,7 +643,7 @@ export default function RevenuePage(): React.JSX.Element {
                       onClick={() => handleSort('category')}
                     >
                       <div className="flex items-center">
-                        Category
+                        Ангилал
                         {sortField === 'category' && (
                           sortDirection === 'asc' ? 
                             <ArrowUp className="ml-1 h-4 w-4" /> : 
@@ -651,7 +655,7 @@ export default function RevenuePage(): React.JSX.Element {
                       scope="col" 
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Status
+                      Төлөв
                     </th>
                     <th 
                       scope="col" 
@@ -659,7 +663,7 @@ export default function RevenuePage(): React.JSX.Element {
                       onClick={() => handleSort('amount')}
                     >
                       <div className="flex items-center justify-end">
-                        Amount
+                        Дүн
                         {sortField === 'amount' && (
                           sortDirection === 'asc' ? 
                             <ArrowUp className="ml-1 h-4 w-4" /> : 
@@ -668,7 +672,7 @@ export default function RevenuePage(): React.JSX.Element {
                       </div>
                     </th>
                     <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Actions
+                      Үйлдлүүд
                     </th>
                   </tr>
                 </thead>
@@ -696,7 +700,11 @@ export default function RevenuePage(): React.JSX.Element {
                             {revenue.status === 'completed' && <CheckCircle className="w-3 h-3 mr-1" />}
                             {revenue.status === 'pending' && <Calendar className="w-3 h-3 mr-1" />}
                             {revenue.status === 'cancelled' && <XCircle className="w-3 h-3 mr-1" />}
-                            <span className="capitalize">{revenue.status}</span>
+                            <span className="capitalize">
+                              {revenue.status === 'completed' && 'Дууссан'}
+                              {revenue.status === 'pending' && 'Хүлээгдэж буй'}
+                              {revenue.status === 'cancelled' && 'Цуцлагдсан'}
+                            </span>
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-medium text-green-600">
@@ -715,7 +723,7 @@ export default function RevenuePage(): React.JSX.Element {
                   ) : (
                     <tr>
                       <td colSpan={7} className="px-6 py-10 text-center text-sm text-gray-500">
-                        No revenues found matching your filters
+                        Таны шүүлтүүртэй тохирох орлого олдсонгүй
                       </td>
                     </tr>
                   )}
@@ -729,11 +737,11 @@ export default function RevenuePage(): React.JSX.Element {
                 <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                   <div>
                     <p className="text-sm text-gray-700">
-                      Showing <span className="font-medium">{(currentPage - 1) * ITEMS_PER_PAGE + 1}</span> to{' '}
+                      <span className="font-medium">{(currentPage - 1) * ITEMS_PER_PAGE + 1}</span> -ээс{' '}
                       <span className="font-medium">
                         {Math.min(currentPage * ITEMS_PER_PAGE, filteredRevenues.length)}
                       </span>{' '}
-                      of <span className="font-medium">{filteredRevenues.length}</span> results
+                      хүртэл, нийт <span className="font-medium">{filteredRevenues.length}</span> үр дүнгээс
                     </p>
                   </div>
                   <div>
@@ -747,7 +755,7 @@ export default function RevenuePage(): React.JSX.Element {
                             : 'text-gray-500 hover:bg-gray-50'
                         }`}
                       >
-                        <span className="sr-only">Previous</span>
+                        <span className="sr-only">Өмнөх</span>
                         <ArrowLeft className="h-5 w-5" />
                       </button>
                       
@@ -778,7 +786,7 @@ export default function RevenuePage(): React.JSX.Element {
                             : 'text-gray-500 hover:bg-gray-50'
                         }`}
                       >
-                        <span className="sr-only">Next</span>
+                        <span className="sr-only">Дараах</span>
                         <ArrowRight className="h-5 w-5" />
                       </button>
                     </nav>
@@ -804,13 +812,13 @@ export default function RevenuePage(): React.JSX.Element {
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                    <h3 className="text-lg leading-6 font-medium text-gray-900 mb-6">Add New Revenue</h3>
+                    <h3 className="text-lg leading-6 font-medium text-gray-900 mb-6">Шинэ орлого нэмэх</h3>
                     
                     <form className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="revenue-date" className="block text-sm font-medium text-gray-700 mb-1">
-                            Date
+                            Огноо
                           </label>
                           <input
                             type="date"
@@ -822,7 +830,7 @@ export default function RevenuePage(): React.JSX.Element {
                         </div>
                         <div>
                           <label htmlFor="revenue-amount" className="block text-sm font-medium text-gray-700 mb-1">
-                            Amount ($)
+                            Дүн ($)
                           </label>
                           <input
                             type="number"
@@ -838,13 +846,13 @@ export default function RevenuePage(): React.JSX.Element {
                       
                       <div>
                         <label htmlFor="revenue-description" className="block text-sm font-medium text-gray-700 mb-1">
-                          Description
+                          Тайлбар
                         </label>
                         <input
                           type="text"
                           id="revenue-description"
                           name="revenue-description"
-                          placeholder="Enter revenue description"
+                          placeholder="Орлогын тайлбар оруулах"
                           className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
@@ -852,14 +860,14 @@ export default function RevenuePage(): React.JSX.Element {
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="revenue-category" className="block text-sm font-medium text-gray-700 mb-1">
-                            Category
+                            Ангилал
                           </label>
                           <select
                             id="revenue-category"
                             name="revenue-category"
                             className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           >
-                            <option value="">Select a category</option>
+                            <option value="">Ангилал сонгох</option>
                             {categories.map(category => (
                               <option key={category.id} value={category.id}>{category.name}</option>
                             ))}
@@ -867,29 +875,29 @@ export default function RevenuePage(): React.JSX.Element {
                         </div>
                         <div>
                           <label htmlFor="revenue-status" className="block text-sm font-medium text-gray-700 mb-1">
-                            Status
+                            Төлөв
                           </label>
                           <select
                             id="revenue-status"
                             name="revenue-status"
                             className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           >
-                            <option value="completed">Completed</option>
-                            <option value="pending">Pending</option>
+                            <option value="completed">Дууссан</option>
+                            <option value="pending">Хүлээгдэж буй</option>
                           </select>
                         </div>
                       </div>
                       
                       <div>
                         <label htmlFor="revenue-client" className="block text-sm font-medium text-gray-700 mb-1">
-                          Client
+                          Харилцагч
                         </label>
                         <select
                           id="revenue-client"
                           name="revenue-client"
                           className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
                         >
-                          <option value="">Select a client</option>
+                          <option value="">Харилцагч сонгох</option>
                           {clients.map(client => (
                             <option key={client.id} value={client.id}>{client.name}</option>
                           ))}
@@ -899,52 +907,52 @@ export default function RevenuePage(): React.JSX.Element {
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="revenue-invoice" className="block text-sm font-medium text-gray-700 mb-1">
-                            Invoice Number
+                            Нэхэмжлэлийн дугаар
                           </label>
                           <input
                             type="text"
                             id="revenue-invoice"
                             name="revenue-invoice"
-                            placeholder="e.g. INV-2025-001"
+                            placeholder="ж.нь. НДБ-2025-001"
                             className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>
                         <div>
                           <label htmlFor="revenue-payment-method" className="block text-sm font-medium text-gray-700 mb-1">
-                            Payment Method
+                            Төлбөрийн хэлбэр
                           </label>
                           <select
                             id="revenue-payment-method"
                             name="revenue-payment-method"
                             className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
                           >
-                            <option value="">Select payment method</option>
-                            <option value="Credit Card">Credit Card</option>
-                            <option value="Bank Transfer">Bank Transfer</option>
+                            <option value="">Төлбөрийн хэлбэр сонгох</option>
+                            <option value="Credit Card">Кредит карт</option>
+                            <option value="Bank Transfer">Банкны шилжүүлэг</option>
                             <option value="PayPal">PayPal</option>
-                            <option value="Cash">Cash</option>
-                            <option value="Check">Check</option>
-                            <option value="Other">Other</option>
+                            <option value="Cash">Бэлэн мөнгө</option>
+                            <option value="Check">Чек</option>
+                            <option value="Other">Бусад</option>
                           </select>
                         </div>
                       </div>
                       
                       <div>
                         <label htmlFor="revenue-notes" className="block text-sm font-medium text-gray-700 mb-1">
-                          Notes (Optional)
+                          Тэмдэглэл (Заавал биш)
                         </label>
                         <textarea
                           id="revenue-notes"
                           name="revenue-notes"
                           rows={3}
-                          placeholder="Add any additional information about this revenue"
+                          placeholder="Энэ орлогын талаар нэмэлт мэдээлэл оруулах"
                           className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
                         />
                       </div>
                       
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Upload Invoice (Optional)
+                          Нэхэмжлэл байршуулах (Заавал биш)
                         </label>
                         <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                           <div className="space-y-1 text-center">
@@ -953,12 +961,12 @@ export default function RevenuePage(): React.JSX.Element {
                             </svg>
                             <div className="flex text-sm text-gray-600">
                               <label htmlFor="file-upload" className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
-                                <span>Upload a file</span>
+                                <span>Файл байршуулах</span>
                                 <input id="file-upload" name="file-upload" type="file" className="sr-only" />
                               </label>
-                              <p className="pl-1">or drag and drop</p>
+                              <p className="pl-1">эсвэл чирэх</p>
                             </div>
-                            <p className="text-xs text-gray-500">PDF, DocX up to 10MB</p>
+                            <p className="text-xs text-gray-500">PDF, DocX 10MB хүртэл</p>
                           </div>
                         </div>
                       </div>
@@ -968,10 +976,10 @@ export default function RevenuePage(): React.JSX.Element {
               </div>
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
-                  Save Revenue
+                  Орлого хадгалах
                 </button>
                 <button type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onClick={() => setIsAddModalOpen(false)}>
-                  Cancel
+                  Цуцлах
                 </button>
               </div>
             </div>
