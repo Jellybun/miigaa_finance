@@ -767,14 +767,6 @@ export default function RevenuePage() {
               </div>
               
               <div className="flex space-x-3">
-                <button
-                  onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-                  className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  <Filter className="h-4 w-4 mr-2" />
-                  Шүүлтүүр
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${isFiltersOpen ? 'rotate-180' : ''}`} />
-                </button>
                 
                 <button
                   onClick={() => setIsAddModalOpen(true)}

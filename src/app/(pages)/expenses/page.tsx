@@ -85,94 +85,95 @@ const sampleExpenses: Expense[] = [
   {
     id: 1,
     date: '2025-05-01',
-    description: 'Office Rent Payment',
+    description: 'Оффисын түрээсийн төлбөр',
     amount: 1500,
-    category: 'Housing',
+    category: 'Орон сууц',
     status: 'completed',
-    notes: 'Monthly office space rent'
+    notes: 'Сарын оффисын талбайн түрээс'
   },
   {
     id: 2,
     date: '2025-05-02',
-    description: 'Office Supplies',
+    description: 'Оффисын бараа худалдан авалт',
     amount: 250.75,
-    category: 'Supplies',
-    status: 'completed',
-    notes: 'Paper, ink, and other office supplies'
+    category: 'Хангамж',
+    status: 'pending',
+    notes: 'Цаас, бэх болон бусад оффисын хэрэгсэл'
   },
   {
     id: 3,
     date: '2025-05-03',
-    description: 'Team Lunch',
+    description: 'Багийн хооллолт',
     amount: 142.50,
-    category: 'Food',
-    status: 'completed',
-    notes: 'Monthly team building lunch'
+    category: 'Хоол',
+    status: 'cancelled',
+    notes: 'Сарын багийн уулзалтын алжаал тайлах хоол'
   },
   {
     id: 4,
     date: '2025-05-03',
-    description: 'Internet Service',
+    description: 'Интернэт үйлчилгээний төлбөр',
     amount: 89.99,
-    category: 'Utilities',
-    status: 'completed',
-    notes: 'Monthly internet service fee'
+    category: 'Үйлчилгээ',
+    status: 'cancelled',
+    notes: 'Сарын интернэтийн үйлчилгээний хураамж'
   },
   {
     id: 5,
     date: '2025-05-05',
-    description: 'Software Subscriptions',
+    description: 'Програм хангамжийн захиалгын төлбөр',
     amount: 199.99,
-    category: 'Software',
-    status: 'completed',
-    notes: 'Monthly software licensing fees'
+    category: 'Програм хангамж',
+    status: 'pending',
+    notes: 'Сарын програм хангамжийн лицензийн хураамж'
   },
   {
     id: 6,
     date: '2025-05-10',
-    description: 'Marketing Campaign',
+    description: 'Сошиал медиа сурталчилгааны кампанит ажил',
     amount: 750,
-    category: 'Marketing',
-    status: 'pending',
-    notes: 'Social media ad campaign'
+    category: 'Маркетинг',
+    status: 'completed',
+    notes: 'Сошиал медиа зар сурталчилгаа'
   },
   {
     id: 7,
     date: '2025-05-15',
-    description: 'Server Costs',
+    description: 'Серверийн зардал',
     amount: 350,
-    category: 'Technology',
+    category: 'Технологи',
     status: 'pending',
-    notes: 'Monthly server and hosting fees'
+    notes: 'Сервер болон хостингийн сарын хураамж'
   },
   {
     id: 8,
     date: '2025-05-18',
-    description: 'Business Trip',
+    description: 'Ажлын аялал',
     amount: 1200,
-    category: 'Travel',
+    category: 'Аялал',
     status: 'pending',
-    notes: 'Flight and hotel for client meeting'
+    notes: 'Клиенттэй уулзалтын нислэг, зочид буудлын зардал'
   },
   {
     id: 9,
     date: '2025-05-20',
-    description: 'Conference Registration',
+    description: 'Хуралд бүртгүүлэх',
     amount: 499,
-    category: 'Professional Development',
-    status: 'cancelled',
-    notes: 'Cancelled industry conference'
+    category: 'Мэргэжлийн хөгжил',
+    status: 'pending',
+    notes: 'Цуцлагдсан салбарын хурал'
   },
   {
     id: 10,
     date: '2025-05-25',
-    description: 'Equipment Purchase',
+    description: 'Тоног төхөөрөмж худалдан авалт',
     amount: 899.99,
-    category: 'Equipment',
-    status: 'completed',
-    notes: 'New office equipment'
+    category: 'Тоног төхөөрөмж',
+    status: 'pending',
+    notes: 'Шинэ оффисын тоног төхөөрөмж'
   }
 ];
+
 
 // Delete Confirmation Modal
 function DeleteConfirmationModal({ 
@@ -645,21 +646,13 @@ export default function ExpensesPage(): React.JSX.Element {
               </div>
               
               <div className="flex space-x-3">
-                <button
-                  onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-                  className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  <Filter className="h-4 w-4 mr-2" />
-                  Filters
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${isFiltersOpen ? 'rotate-180' : ''}`} />
-                </button>
                 
                 <button
                   onClick={() => setIsAddModalOpen(true)}
                   className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   <Plus className="h-4 w-4 mr-2" />
-                  Add Expense
+                  Зарлага нэмэх
                 </button>
               </div>
             </div>
