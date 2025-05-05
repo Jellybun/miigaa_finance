@@ -13,7 +13,7 @@ import {
   Menu, 
   X
 } from 'lucide-react';
-import Profile from './(components)/profile';
+import Profile from '@/(components)/Profile';
 
 interface Transaction {
   id: number;

@@ -1,7 +1,7 @@
 'use client'
 // pages/revenue.tsx
 import React, { useState } from 'react';
-import Profile from '../../(components)/profile'
+import Profile from '@/(components)/Profile';
 
 import { 
   Home, 

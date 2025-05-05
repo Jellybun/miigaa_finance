@@ -26,8 +26,8 @@
 /* 4. Dark‑mode adjust */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #e4e7ed;  /* dark‑gray background */
-    --foreground: #bac2cb;  /* light‑gray text */
+    --background: #d7eadb;  /* dark‑gray background */
+    --foreground: #000000;  /* light‑gray text */
   }
   body {
     background-color: var(--background);

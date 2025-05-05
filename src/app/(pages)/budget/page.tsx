@@ -22,7 +22,8 @@ import {
   Save,
   Trash2
 } from 'lucide-react';
-import Profile from '../../(components)/profile'
+// src/app/(pages)/budget/page.tsx
+import Profile from '@/(components)/Profile';
 
 // Types
 interface BudgetCategory {
