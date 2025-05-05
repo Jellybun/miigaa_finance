@@ -18,7 +18,8 @@ import {
   ArrowUp,
   ArrowDown,
   Save,
-  Trash2
+  Trash2,
+  Settings
 } from 'lucide-react';
 // src/app/(pages)/budget/page.tsx
 import Profile from '@/(components)/Profile';
@@ -227,6 +228,11 @@ export default function BudgetPage(): React.JSX.Element {
     setNewBudgetAmount('');
   };
   
+  // Handle delete category
+  const handleDeleteCategory = (categoryId: number) => {
+    setBudgetCategories(prev => prev.filter(category => category.id !== categoryId));
+  };
+  
   // Handle sort
   const handleSort = (field: string) => {
     if (sortField === field) {
@@ -263,7 +269,7 @@ export default function BudgetPage(): React.JSX.Element {
   
   // Format currency
   const formatCurrency = (value: number): string => {
-    return '$' + value.toLocaleString(undefined, {
+    return 'MNT' + value.toLocaleString(undefined, {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     });
@@ -320,6 +326,14 @@ export default function BudgetPage(): React.JSX.Element {
     setIsAddModalOpen(false);
   };
 
+  // Handle modal overlay click
+  const handleModalOverlayClick = (e: React.MouseEvent) => {
+    // Only close if clicked directly on the overlay
+    if (e.target === e.currentTarget) {
+      setIsAddModalOpen(false);
+    }
+  };
+
   return (
     <div className="flex h-screen bg-gray-50">
       {/* Sidebar - Mobile Overlay */}
@@ -331,23 +345,24 @@ export default function BudgetPage(): React.JSX.Element {
       )}
 
       {/* Sidebar */}
-      <aside 
-        className={`fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:h-screen ${
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
-      >
-        <div className="flex items-center justify-between h-16 px-6 border-b">
-          <div className="flex items-center">
-            <DollarSign className="w-6 h-6 text-blue-600" />
-            <span className="ml-2 text-xl font-semibold text-gray-800">FinTrack</span>
-          </div>
-          <button 
-            className="p-1 rounded-md lg:hidden" 
-            onClick={() => setIsSidebarOpen(false)}
-          >
-            <X className="w-5 h-5 text-gray-500" />
-          </button>
-        </div>
+      {/* Sidebar */}
+<aside 
+  className={`fixed inset-y-0 left-0 z-30 w-64 bg-indigo-900 text-white shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:h-screen ${
+    isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+  }`}
+>
+  <div className="flex items-center justify-between h-16 px-6 border-b border-indigo-800">
+    <div className="flex items-center">
+      <DollarSign className="w-6 h-6 text-indigo-200" />
+      <span className="ml-2 text-xl font-semibold text-white">FinTrack</span>
+    </div>
+    <button 
+      className="p-1 rounded-md lg:hidden text-indigo-200 hover:text-white" 
+      onClick={() => setIsSidebarOpen(false)}
+    >
+      <X className="w-5 h-5" />
+    </button>
+  </div>
         
         <nav className="mt-6 px-4">
           <div className="space-y-4">
@@ -379,12 +394,12 @@ export default function BudgetPage(): React.JSX.Element {
         </header>
 
         {/* Main Content */}
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
-          <div className="mb-6">
-          <h1 className="text-2xl font-semibold text-gray-800">Төсвийн удирдлага</h1>
-          <p className="text-gray-600 mt-1">Ангилал бүрээрээ зарлагаа хянаж, удирдаарай</p>
-
-          </div>
+        {/* Main Content */}
+<main className="flex-1 overflow-y-auto bg-gray-50 p-6">
+  <div className="mb-6 bg-indigo-800 text-white p-6 rounded-lg shadow-md">
+    <h1 className="text-2xl font-semibold">Төсвийн удирдлага</h1>
+    <p className="mt-1 text-indigo-100">Ангилал бүрээрээ зарлагаа хянаж, удирдаарай</p>
+  </div>
           
           {/* Budget Period Selector */}
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 bg-white rounded-lg shadow p-4">
@@ -807,7 +822,10 @@ export default function BudgetPage(): React.JSX.Element {
                                   <ChevronDown className="w-5 h-5" />
                                 }
                               </button>
-                              <button className="text-red-400 hover:text-red-600">
+                              <button 
+                                className="text-red-400 hover:text-red-600"
+                                onClick={() => handleDeleteCategory(category.id)}
+                              >
                                 <Trash2 className="w-5 h-5" />
                               </button>
                             </div>
@@ -823,91 +841,93 @@ export default function BudgetPage(): React.JSX.Element {
         </main>
       </div>
       
-      {/* Add Category Modal */}
+      {/* Add Category Modal - Fixed with proper overlay handling */}
       {isAddModalOpen && (
-        <div className="fixed z-40 inset-0 overflow-y-auto">
-          <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-              <div className="absolute inset-0 bg-gray-500 opacity-75" onClick={() => setIsAddModalOpen(false)}></div>
-            </div>
+        <div 
+          className="fixed z-50 inset-0 overflow-y-auto flex items-center justify-center"
+          onClick={handleModalOverlayClick}
+        >
+          {/* Background overlay */}
+          <div className="fixed inset-0 bg-gray-800 bg-opacity-75" aria-hidden="true"></div>
+          
+          {/* Modal Content */}
+          <div 
+            className="relative bg-white rounded-lg overflow-hidden shadow-xl max-w-lg w-full mx-4 sm:mx-auto z-50"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div className="sm:flex sm:items-start">
+                <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                <h3 className="text-lg leading-6 font-medium text-gray-900 mb-6">Шинэ Төсвийн Ангилал Нэмэх</h3>
+                  
+                  <form className="space-y-4">
+                    <div>
+                    <label htmlFor="category-name" className="block text-sm font-medium text-gray-700 mb-1">
+                      Ангиллын Нэр
+                    </label>
 
-            <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            
-            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-              <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="sm:flex sm:items-start">
-                  <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                  <h3 className="text-lg leading-6 font-medium text-gray-900 mb-6">Шинэ Төсвийн Ангилал Нэмэх</h3>
+                      <input
+                        type="text"
+                        id="category-name"
+                        className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                        placeholder="e.g. Entertainment, Groceries, etc."
+                        value={newCategory.name}
+                        onChange={(e) => setNewCategory({...newCategory, name: e.target.value})}
+                      />
+                    </div>
                     
-                    <form className="space-y-4">
-                      <div>
-                      <label htmlFor="category-name" className="block text-sm font-medium text-gray-700 mb-1">
-                        Ангиллын Нэр
+                    <div>
+                      <label htmlFor="budget-amount" className="block text-sm font-medium text-gray-700 mb-1">
+                      Төсвийн Хэмжээ ($)
                       </label>
-
-                        <input
-                          type="text"
-                          id="category-name"
-                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                          placeholder="e.g. Entertainment, Groceries, etc."
-                          value={newCategory.name}
-                          onChange={(e) => setNewCategory({...newCategory, name: e.target.value})}
-                        />
+                      <input
+                        type="number"
+                        id="budget-amount"
+                        className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                        placeholder="0.00"
+                        min="0"
+                        step="0.01"
+                        value={newCategory.budgetAmount}
+                        onChange={(e) => setNewCategory({...newCategory, budgetAmount: e.target.value})}
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Ангиллын Өнгө
+                      </label>
+                      <div className="grid grid-cols-5 gap-2">
+                        {['blue', 'green', 'red', 'yellow', 'purple', 'pink', 'indigo', 'cyan', 'orange', 'gray'].map((color) => (
+                          <button
+                            key={color}
+                            type="button"
+                            className={`h-8 rounded-md ${categoryColorMap[color].split(' ')[0]} ${
+                              newCategory.color === color ? 'ring-2 ring-offset-2 ring-blue-500' : ''
+                            }`}
+                            onClick={() => setNewCategory({...newCategory, color})}
+                          />
+                        ))}
                       </div>
-                      
-                      <div>
-                        <label htmlFor="budget-amount" className="block text-sm font-medium text-gray-700 mb-1">
-                        Төсвийн Хэмжээ ($)
-                        </label>
-                        <input
-                          type="number"
-                          id="budget-amount"
-                          className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                          placeholder="0.00"
-                          min="0"
-                          step="0.01"
-                          value={newCategory.budgetAmount}
-                          onChange={(e) => setNewCategory({...newCategory, budgetAmount: e.target.value})}
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Ангиллын Өнгө
-                        </label>
-                        <div className="grid grid-cols-5 gap-2">
-                          {['blue', 'green', 'red', 'yellow', 'purple', 'pink', 'indigo', 'cyan', 'orange', 'gray'].map((color) => (
-                            <button
-                              key={color}
-                              type="button"
-                              className={`h-8 rounded-md ${categoryColorMap[color].split(' ')[0]} ${
-                                newCategory.color === color ? 'ring-2 ring-offset-2 ring-blue-500' : ''
-                              }`}
-                              onClick={() => setNewCategory({...newCategory, color})}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+                    </div>
+                  </form>
                 </div>
               </div>
-              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button 
-                  type="button" 
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  onClick={handleAddCategory}
-                >
-                Ангилал Нэмэх
-                </button>
-                <button 
-                  type="button" 
-                  className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-                  onClick={() => setIsAddModalOpen(false)}
-                >
-  Цуцлах
-  </button>
-              </div>
+            </div>
+            <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button 
+                type="button" 
+                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                onClick={handleAddCategory}
+              >
+              Ангилал Нэмэх
+              </button>
+              <button 
+                type="button" 
+                className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                onClick={() => setIsAddModalOpen(false)}
+              >
+              Цуцлах
+              </button>
             </div>
           </div>
         </div>
@@ -936,11 +956,11 @@ function NavItem({ icon, text, active, whichPage }: NavItemProps): React.JSX.Ele
       href={link}
       className={`flex items-center px-4 py-2.5 text-sm font-medium rounded-md ${
         active 
-          ? 'bg-blue-50 text-blue-700' 
-          : 'text-gray-700 hover:bg-gray-100'
+          ? 'bg-indigo-800 text-white' 
+          : 'text-indigo-100 hover:bg-indigo-800 hover:text-white'
       }`}
     >
-      <span className={`mr-3 ${active ? 'text-blue-500' : 'text-gray-500'}`}>
+      <span className={`mr-3 ${active ? 'text-white' : 'text-indigo-300'}`}>
         {icon}
       </span>
       {text}

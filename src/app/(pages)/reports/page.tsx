@@ -958,22 +958,22 @@ export default function ReportsPage(): React.JSX.Element {
 
       {/* Sidebar */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:h-screen ${
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
-      >
-        <div className="flex items-center justify-between h-16 px-6 border-b">
-          <div className="flex items-center">
-            <DollarSign className="w-6 h-6 text-blue-600" />
-            <span className="ml-2 text-xl font-semibold text-gray-800">СанХүрээ</span>
-          </div>
-          <button 
-            className="p-1 rounded-md lg:hidden" 
-            onClick={() => setIsSidebarOpen(false)}
-          >
-            <X className="w-5 h-5 text-gray-500" />
-          </button>
-        </div>
+              className={`fixed inset-y-0 left-0 z-30 w-64 bg-indigo-900 text-white shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:h-screen ${
+                isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+              }`}
+            >
+              <div className="flex items-center justify-between h-16 px-6 border-b border-indigo-800">
+                <div className="flex items-center">
+                  <DollarSign className="w-6 h-6 text-indigo-200" />
+                  <span className="ml-2 text-xl font-semibold text-white">FinTrack</span>
+                </div>
+                <button 
+                  className="p-1 rounded-md lg:hidden text-indigo-200 hover:text-white" 
+                  onClick={() => setIsSidebarOpen(false)}
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
         
         <nav className="mt-6 px-4">
           <div className="space-y-4">
@@ -1006,9 +1006,10 @@ export default function ReportsPage(): React.JSX.Element {
 
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
-          <div className="mb-6">
-            <h1 className="text-2xl font-semibold text-gray-800">Санхүүгийн тайлан</h1>
-            <p className="text-gray-600 mt-1">Дэлгэрэнгүй санхүүгийн тайланг гаргаж, харах</p>
+
+          <div className="mb-6 bg-indigo-800 text-white p-6 rounded-lg shadow-md">
+            <h1 className="text-2xl font-semibold">Санхүүгийн тайлан</h1>
+            <p className="mt-1 text-indigo-100">Дэлгэрэнгүй санхүүгийн тайланг гаргаж, харах</p>
           </div>
           
           {showFilters ? (
@@ -1201,21 +1202,21 @@ interface NavItemProps {
 
 function NavItem({ icon, text, active, whichPage }: NavItemProps): React.JSX.Element {
   let link = '/'
-  if (whichPage === "expenses") link = '/expenses'
-  if (whichPage === "budget") link = '/budget'
-  if (whichPage === "reports") link = '/reports'
-  if (whichPage === "revenue") link = '/revenue'
-  if (whichPage === "settings") link = '/settings'
+  if (whichPage == "expenses") link = '/expenses'
+  if (whichPage == "budget") link = '/budget'
+  if (whichPage == "reports") link = '/reports'
+  if (whichPage == "revenue") link = '/revenue'
+  if (whichPage == "settings") link = '/settings'
   return (
     <a 
       href={link}
       className={`flex items-center px-4 py-2.5 text-sm font-medium rounded-md ${
         active 
-          ? 'bg-blue-50 text-blue-700' 
-          : 'text-gray-700 hover:bg-gray-100'
+          ? 'bg-indigo-800 text-white' 
+          : 'text-indigo-100 hover:bg-indigo-800 hover:text-white'
       }`}
     >
-      <span className={`mr-3 ${active ? 'text-blue-500' : 'text-gray-500'}`}>
+      <span className={`mr-3 ${active ? 'text-white' : 'text-indigo-300'}`}>
         {icon}
       </span>
       {text}
