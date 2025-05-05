@@ -9,8 +9,6 @@ import {
   CreditCard, 
   PieChart, 
   FileText, 
-  Settings, 
-  Bell, 
   Search, 
   Menu, 
   X,

@@ -7,8 +7,6 @@ import {
   CreditCard, 
   PieChart, 
   FileText, 
-  Settings, 
-  Bell, 
   Menu, 
   X,
   ChevronDown,
